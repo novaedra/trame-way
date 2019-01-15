@@ -38,3 +38,13 @@ function isLogged(){
 }
 return false;
 }
+function pourcentage($numerateur, $denominateur)
+{
+    if ($denominateur == 0) {
+        echo 'PAS PAR ZERO !';
+    } else {
+        $result = $numerateur/$denominateur;
+        $result = round($result*100,3);
+        return $result.' %' ;
+    }
+}
