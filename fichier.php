@@ -1,7 +1,11 @@
 <?php
-include('function.php');
+include ('inc/function.php');
+include ('inc/header.php');
+include ('inc/nav.php');
+
 define('NL', "\n");
 require('IP4Calc.php');
+
 if(!isset($_POST['calculer'])) { ?>
     <div class="content">
         <div class="container-fluid">
@@ -251,32 +255,43 @@ if (isset($_FILES['json'])) {
          echo '<br/>';*/
     }
 }
-} else {
+}
+else {
     echo("$addr  Address IP invalide");
 }
 }
-?>
 
-<canvas id="polar-chart" width="800" height="450"></canvas>
-<script>
-    new Chart(document.getElementById("polar-chart"), {
-        type: 'polarArea',
-        data: {
-            labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
-            datasets: [
-                {
-                    label: "Population (millions)",
-                    backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-                    data: [2478,5267,734,784,433]
+if (!empty($protocols)) {
+
+    $total = count($protocols);
+    $compteur = 0;
+
+    ?>
+
+    <canvas id="bar-chart-horizontal" width="800" height="450"></canvas>
+        <script>
+            new Chart(document.getElementById("bar-chart-horizontal"), {
+                type: 'horizontalBar',
+                data: {
+                    labels: [<?php foreach ($protocols as $key => $value) { $compteur++; ?>"<?php echo $key;?>"<?php if ($compteur != $total) { echo ','; }} ?>],
+                    datasets: [
+                        {
+                            <?php $compteur = 0; ?>
+                            label: "Population (millions)",
+                            backgroundColor: [<?php foreach ($protocols as $key => $value) { $compteur++; ?>"<?php echo rand_color();?>"<?php  if ($compteur != $total) { echo ','; }} ?><?php $compteur = 0; ?>],
+                            data: [<?php foreach ($protocols as $key => $value) { $compteur++; echo "$value"; if ($compteur != $total) { echo ','; }} ?>]
+                        }
+                    ]
+                },
+                options: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: 'Predicted world population (millions) in 2050'
+                    }
                 }
-            ]
-        },
-        options: {
-            title: {
-                display: true,
-                text: 'Predicted world population (millions) in 2050'
-            }
-        }
-    });
-</script>
+            });
+        </script>
 
+    <?php
+}
