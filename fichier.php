@@ -1,4 +1,7 @@
 <?php
+include ('function.php');
+include ('inc/header.php');
+include ('inc/nav.php');
 
 define('NL', "\n");
 require('IP4Calc.php');
@@ -282,4 +285,4 @@ if (isset($_FILES['json'])) {
         }
     });
 </script>
-
+                <?php foreach ($protocols as $key => $value){ echo "['" . $key . "'," . $value . "],";} ?>
