@@ -54,6 +54,8 @@ body {
     overflow: hidden;
     background-color: #f1f1f1;
     padding: 20px 10px;
+    border-radius: 20px;
+    border-bottom-color: black;
 }
 
 /* Style the header links */
@@ -82,8 +84,12 @@ body {
 
 /* Style the active/current link*/
 .header a.active {
-    background-color: dodgerblue;
-    color: white;
+    background: linear-gradient(-45deg, red, orange, yellow, white);
+    background-size: 400% 400%;
+    -webkit-animation: Gradient 15s ease infinite;
+    -moz-animation: Gradient 15s ease infinite;
+    animation: Gradient 15s ease infinite;
+    color: black;
 }
 
 /* Float the link section to the right */
