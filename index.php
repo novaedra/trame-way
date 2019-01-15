@@ -8,7 +8,10 @@
 </head>
 <body>
 
-<?php include ('inc/header.php'); ?>
+<?php
+include ('function.php');
+include ('inc/header.php');
+?>
 
 <div class="container">
     <div class="fichier"><a class="bloc_lien" href="fichier.php" title="Analyser à partir d'un fichier"><img src="inc/img/file.png" alt="fichier"></a></div>

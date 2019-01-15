@@ -2,7 +2,7 @@ body {
     width: 100wh;
     height: 90vh;
     color: white;
-    background: linear-gradient(-45deg, black, darkgray, grey, white);
+    background: linear-gradient(-45deg, red, orange, yellow, white);
     background-size: 400% 400%;
     -webkit-animation: Gradient 15s ease infinite;
     -moz-animation: Gradient 15s ease infinite;
@@ -109,7 +109,6 @@ body {
     max-height: 50%;
     width: 100%;
     height: 100%;
-    background-color: red;
 }
 
 .fichier {
@@ -140,8 +139,5 @@ body {
     background: white;
     height: 100%;
     width: auto;
-}
-
-a['title'] {
-color:red;
+    border-radius: 50px;
 }
