@@ -1,5 +1,5 @@
 <?php
-
+include('function.php');
 define('NL', "\n");
 require('IP4Calc.php');
 if(!isset($_POST['calculer'])) { ?>
@@ -54,13 +54,7 @@ else {
 
     if (filter_var($addr, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
 
-
-    } else {
-        echo("$addr  Address IP invalide");
-    }
-}
-
-
+        $oIP = new IP4Calc($addr, $mask);
 
 if (isset($_FILES['json'])) {
 
@@ -257,7 +251,10 @@ if (isset($_FILES['json'])) {
          echo '<br/>';*/
     }
 }
-
+} else {
+    echo("$addr  Address IP invalide");
+}
+}
 ?>
 
 <canvas id="polar-chart" width="800" height="450"></canvas>
