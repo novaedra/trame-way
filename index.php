@@ -14,8 +14,8 @@ include ('inc/header.php');
 ?>
 
 <div class="container">
-    <div class="fichier"><a class="bloc_lien" href="fichier.php" title="Analyser à partir d'un fichier"><img src="inc/img/file.png" alt="fichier"></a></div>
-    <div class="capture"><a class="bloc_lien" href="realtime.php" title="Effectuer une capture"><img src="inc/img/network.png" alt="réseau"></a></div>
+    <div class="fichier"><a class="bloc_lien" href="fichier.php" title="Analyser à partir d'un fichier"><img src="inc/img/file.png" alt="fichier"><br/><p class="option">Analyser des fichiers</p></a></div>
+    <div class="capture"><a class="bloc_lien" href="capture.php" title="Effectuer une capture"><img src="inc/img/network.png" alt="réseau"><br/><p class="option">Commencer une capture</p></a></div>
 </div>
 <div class="clear"></div>
 </body>

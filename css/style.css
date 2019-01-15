@@ -111,6 +111,11 @@ body {
     height: 100%;
 }
 
+.container a {
+    text-decoration: none;
+    color:black;
+}
+
 .fichier {
     height: 99%;
     width: 45%;
@@ -135,9 +140,16 @@ body {
 }
 
 .bloc_lien {
+    padding-top: 10px;
     display: block;
     background: white;
     height: 100%;
     width: auto;
-    border-radius: 50px;
+    border-radius: 10%;
+}
+
+.option {
+    font-size: 1.5em;
+    padding-top: 5%;
+    text-transform: uppercase;
 }
