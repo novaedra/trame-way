@@ -147,9 +147,9 @@ if (isset($_FILES['json'])) {
 
             <thead> <!-- En-tête du tableau -->
             <tr>
-                <th><?php echo 'Total adresses IP : '.'<br/>'.count($ipList) ?></th>
-                <th><?php echo 'Total adresses MAC : '.'<br/>'.count($macList) ?></th>
-                <th><?php echo 'Total trames : '.'<br/>'.$nbrtrame ?></th>
+                <th><?php echo 'Total adresses IP ' ?></th>
+                <th><?php echo 'Total adresses MAC ' ?></th>
+                <th><?php echo 'Total trames ' ?></th>
             </tr>
             </thead>
 
@@ -161,9 +161,9 @@ if (isset($_FILES['json'])) {
 
             <tbody>
             <tr>
-                <th>Nom</th>
-                <th>Âge</th>
-                <th>Pays</th>
+                <th><?php echo count($ipList) ?></th>
+                <th><?php echo count($macList) ?></th>
+                <th><?php echo  $nbrtrame ?></th>
             </tr>
             </tbody>
         </table>

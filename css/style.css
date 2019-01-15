@@ -157,6 +157,7 @@ body {
     text-transform: uppercase;
 }
 
+<<<<<<< HEAD
 form {
     background-color:#FAFAFA;
     padding:10px;
@@ -191,4 +192,18 @@ select {
 input[type=submit], input[type=reset] {
     box-shadow:1px 1px 1px gray;
     cursor:pointer;
+}
+
+table, td, th {
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 15px;
 }
