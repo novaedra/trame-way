@@ -1,3 +1,9 @@
+<?php
+include ('inc/function.php');
+include ('inc/header.php');
+include ('inc/nav.php');
+?>
+
 <form action="capture.php" method="POST">
     Nom du fichier : <input type="text" name="filename"><span>.JSON</span><br/>
     <input type="submit" value="Capturer réseau"/>

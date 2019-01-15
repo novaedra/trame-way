@@ -268,10 +268,11 @@ if (!empty($protocols)) {
 
     ?>
 
-    <canvas id="bar-chart-horizontal" width="800" height="450"></canvas>
+    <canvas id="doughnut-chart" width="800" height="450"></canvas>
         <script>
-            new Chart(document.getElementById("bar-chart-horizontal"), {
-                type: 'horizontalBar',
+
+            new Chart(document.getElementById("doughnut-chart"), {
+                type: 'doughnut',
                 data: {
                     labels: [<?php foreach ($protocols as $key => $value) { $compteur++; ?>"<?php echo $key;?>"<?php if ($compteur != $total) { echo ','; }} ?>],
                     datasets: [
@@ -284,7 +285,6 @@ if (!empty($protocols)) {
                     ]
                 },
                 options: {
-                    legend: { display: false },
                     title: {
                         display: true,
                         text: 'Predicted world population (millions) in 2050'

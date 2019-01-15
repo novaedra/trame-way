@@ -1,8 +1,6 @@
 body {
     width: 100wh;
     height: 90vh;
-    color: white;
-    background-color: grey;
     font-family: 'Open Sans';
     text-align: center;
 }
@@ -157,4 +155,40 @@ body {
     font-size: 1.5em;
     padding-top: 5%;
     text-transform: uppercase;
+}
+
+form {
+    background-color:#FAFAFA;
+    padding:10px;
+    margin:0 auto;
+    width:280px;
+    box-shadow:1px 1px 1px gray;
+    width:50%;
+}
+
+input, textarea, select, option {
+    background-color:white;
+}
+
+input {
+    width:25%;
+}
+
+input[type=submit] {
+    width:15%;
+}
+
+input, textarea, select {
+    padding:3px;
+    border:1px solid lightgray;
+    border-radius:10px;
+    box-shadow:1px 1px 2px gray inset;
+}
+select {
+    margin-top:10px;
+}
+
+input[type=submit], input[type=reset] {
+    box-shadow:1px 1px 1px gray;
+    cursor:pointer;
 }
