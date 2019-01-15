@@ -7,9 +7,9 @@ require('IP4Calc.php');
 if(!isset($_POST['calculer'])) { ?>
     <div class="content">
         <div class="container-fluid">
-            <form method="post" action="fichier.php" enctype="multipart/form-data">
+            <form method="post" action="index.php" enctype="multipart/form-data">
                 <label for="adresse">Saisir une adresse IPv4:</label>
-                <input type="text" name="adresse"/>
+                <input type="text" name="adresse"/></br>
                 <label for="masque">Saisir le masque de sous réseau</label>
                 <select name="masque">
                     <option value="255.0.0.0">255.0.0.0/8</option>
@@ -37,8 +37,8 @@ if(!isset($_POST['calculer'])) { ?>
                     <option value="255.255.255.252">255.255.255.252/30</option>
                     <option value="255.255.255.254">255.255.255.254/31</option>
                     <option value="255.255.255.255">255.255.255.255/32</option>
-                </select>
-                <input type="file" name="json"/>
+                </select></br>
+                <input type="file" name="json"/></br>
                 <br/>
 
                 <input type="submit" name="calculer" value="calculer"/>
@@ -58,15 +58,12 @@ else {
 
         $serveur = array();
 
-        echo("$addr Address IP valide");
 
-        echo 'Adresse saisie : '.$addr.'/ masque :'.$mask;br();
-//echo('Test for 172.23.10.221/16'.NL);
+        echo 'Adresse saisie : '.$addr.' masque :'.$mask;
+        br();
         $oIP = new IP4Calc($addr, $mask);
         echo('masque sous-réseau (Quad): ' . $oIP->get(IP4Calc::NETMASK, IP4Calc::QUAD_DOTTED) . NL);
         br();
-
-
         echo('Réseaux (Quad): ' . $oIP->get(IP4Calc::NETWORK, IP4Calc::QUAD_DOTTED) . NL);
         br();
         echo('Broadcast (Quad): ' . $oIP->get(IP4Calc::BROADCAST, IP4Calc::QUAD_DOTTED) . NL);
@@ -75,30 +72,11 @@ else {
         br(); $serveur[] = $oIP->get(IP4Calc::MIN_HOST, IP4Calc::QUAD_DOTTED) . NL;
         echo('Adresse IP la plus haute du sous-réseau (Quad): ' . $oIP->get(IP4Calc::MAX_HOST, IP4Calc::QUAD_DOTTED) . NL);
         br(); $serveur[] = $oIP->get(IP4Calc::MAX_HOST, IP4Calc::QUAD_DOTTED) . NL;
-        tab($oIP);
-        $addtest = '191.11.13.5';
-
-        $oIPT= new IP4Calc($addtest, $mask);
-        tab($oIPT);
-
-        var_dump($oIP->partOf('191.168.1.100'));
-
-
-
-        //echo('Adresse IP précédente(Quad): ' . $oIP->get(IP4Calc::PREVIOUS_HOST, IP4Calc::QUAD_DOTTED) . NL);
-        br();
-        //echo('Adresse IP suivante(Quad): ' . $oIP->get(IP4Calc::NEXT_HOST, IP4Calc::QUAD_DOTTED) . NL);
-        br();
-
         echo('Nombre d\'adresses IP utilisables pour les hôtes de ce sous-réseau: ' . $oIP->count() . NL);
         br();
-
-//}
     } else {
         echo("$addr  Address IP invalide");
     }
-
-
 }
 
 
@@ -117,8 +95,8 @@ if (isset($_FILES['json'])) {
         $errors = "Extension non autorisé, veuillez séléectionner un fichier .JSON";
     }
 
-    if ($file_size > 125000000) {
-        $errors = 'Le fichier doit être au maximum de 1 GB';
+    if ($file_size > 209715200) {
+        $errors = 'Le fichier doit être au maximum de 2 MB';
     }
 
     if (empty($errors) == false) {
@@ -256,17 +234,15 @@ if (isset($_FILES['json'])) {
 
             <thead> <!-- En-tête du tableau -->
             <tr>
-                <th>IP</th>
-                <th>MAC</th>
-                <th>Communications</th>
+                <th><?php echo 'Total adresses IP : '.'<br/>'.count($ipList) ?></th>
+                <th><?php echo 'Total adresses MAC : '.'<br/>'.count($macList) ?></th>
+                <th><?php echo 'Total trames : '.'<br/>'.$nbrtrame ?></th>
             </tr>
             </thead>
 
             <tfoot> <!-- Pied de tableau -->
             <tr>
-                <th><?php echo 'Total adresses IP : '.'<br/>'.count($ipList) ?></th>
-                <th><?php echo 'Total adresses MAC : '.'<br/>'.count($macList) ?></th>
-                <th><?php echo 'Total trames : '.'<br/>'.$nbrtrame ?></th>
+
             </tr>
             </tfoot>
 
@@ -278,14 +254,39 @@ if (isset($_FILES['json'])) {
             </tr>
             </tbody>
         </table>
+        <table>
+            <caption><?php echo 'Adresse saisie : '.$addr ?></caption>
+
+            <thead> <!-- En-tête du tableau -->
+            <tr>
+                <th>Adresse réseau</th>
+                <th>Adresse broadcast</th>
+                <th>Adresse la plus basse du réseau</th>
+                <th>Adresse la plus haute du réseau</th>
+                <th>Nombre hots sous réseau</th>
+            </tr>
+            </thead>
+
+            <tfoot> <!-- Pied de tableau -->
+            <tr>
+
+            </tr>
+            </tfoot>
+
+            <tbody>
+            <tr>
+                <th><?php echo $oIP->get(IP4Calc::NETWORK, IP4Calc::QUAD_DOTTED) . NL; ?></th>
+                <th><?php echo $oIP->get(IP4Calc::BROADCAST, IP4Calc::QUAD_DOTTED) . NL; ?></th>
+                <th><?php echo $oIP->get(IP4Calc::MIN_HOST, IP4Calc::QUAD_DOTTED) . NL; ?></th>
+                <th><?php echo $oIP->get(IP4Calc::MAX_HOST, IP4Calc::QUAD_DOTTED) . NL; ?></th>
+                <th><?php echo $oIP->count() . NL; ?></th>
+            </tr>
+            </tbody>
+        </table>
         <?php
 
         asort($protocols);
 
-        foreach ($protocols as $key => $value) {
-
-            echo $key . ' : ' . $value . '<br/>';
-        }
 
         echo '<br/>';
 
@@ -300,42 +301,45 @@ if (isset($_FILES['json'])) {
         foreach ($ipv4 as $key => $value) {
             $toto =array();
             $toto = explode(' to ',$key);
+
+            $tempo = true;
             foreach ($toto as $to) {
 
-                if( $oIP->partOf($to) == false )
-                {
-                    echo $key . ' => <span style="color :red;">' . $value . '</span><br/>';
-                    $infraction += $value ;
-                }else
-                {
-                    echo $key . ' => ' . $value . '<br/>';
+                if ($oIP->partOf($to) == false) {
+                    $tempo = false;
                 }
+            }
+            if ($tempo == false) {
+                $infraction += $value ;
             }
         }
         echo $infraction;
+        br();
+        $pcalc = pourcentage($infraction,$nbrtrame);
+        echo 'Erreur : '.$pcalc;
 
         echo '</div>';
         echo '<br/>';
 
-        echo 'Communication MAC à MAC : ';
-        echo '<div class="mac">';
-        foreach ($mac as $key => $value) {
-            echo $key . ' => ' . $value . '<br/>';
-        }
-        echo '</div>';
+        /* echo 'Communication MAC à MAC : ';
+         echo '<div class="mac">';
+         foreach ($mac as $key => $value) {
+             echo $key . ' => ' . $value . '<br/>';
+         }
+         echo '</div>';
         echo '<br/>';
 
-        echo 'Liste des adresses IP : '.'<br/>'.count($ipList).' adresses IP différentes';
-        echo '<pre>';
-        print_r($ipList);
-        echo '</pre>';
-        echo '<br/>';
+         echo 'Liste des adresses IP : '.'<br/>'.count($ipList).' adresses IP différentes';
+         echo '<pre>';
+         print_r($ipList);
+         echo '</pre>';
+         echo '<br/>';
 
-        echo 'Liste des adresses MAC : '.'<br/>'.count($macList).' adresses MAC différentes';
-        echo '<pre>';
-        print_r($macList);
-        echo '</pre>';
-        echo '<br/>';
+         echo 'Liste des adresses MAC : '.'<br/>'.count($macList).' adresses MAC différentes';
+         echo '<pre>';
+         print_r($macList);
+         echo '</pre>';
+         echo '<br/>';*/
     }
 }
 
