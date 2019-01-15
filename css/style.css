@@ -2,11 +2,7 @@ body {
     width: 100wh;
     height: 90vh;
     color: white;
-    background: linear-gradient(-45deg, blueviolet, darkblue, cyan, deepskyblue);
-    background-size: 400% 400%;
-    -webkit-animation: Gradient 15s ease infinite;
-    -moz-animation: Gradient 15s ease infinite;
-    animation: Gradient 15s ease infinite;
+    background-color: grey;
     font-family: 'Open Sans';
     text-align: center;
 }
@@ -53,7 +49,7 @@ body {
 .header {
     overflow: hidden;
     color:white;
-    background-color: grey;
+    background-color: #4a4a4a;
     padding: 20px 10px;
     border-radius: 20px;
     border-bottom-color: black;
@@ -145,7 +141,12 @@ body {
 .bloc_lien {
     padding-top: 10px;
     display: block;
-    background: white;
+    background: linear-gradient(-45deg, mediumblue, darkblue, #2e2eb6, #163ab4);
+    background-size: 400% 400%;
+    -webkit-animation: Gradient 15s ease infinite;
+    -moz-animation: Gradient 15s ease infinite;
+    animation: Gradient 15s ease infinite;
+    font-family: 'Open Sans';
     height: 100%;
     width: auto;
     border-radius: 10%;
