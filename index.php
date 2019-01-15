@@ -1,38 +1,107 @@
-<div class="content">
-    <div class="container-fluid">
-        <form action="index.php" method="POST" enctype="multipart/form-data">
-            <input type="file" name="json"/>
-            <br/>
-            <input type="submit"/>
-        </form>
-    </div>
-</div>
-
-<form action="index.php" method="POST">
-    Adresse début réseau : <input type="text" name="StartIP"><br>
-    Adresse fin de réseau : <input type="text" name="EndIP"><br>
-    Masque de sous-réseau : <input type="text" name="CIDR"><br>
-    <input type="submit"/>
-</form>
-
 <?php
 
 //include ('inc/PDO.php');
 include ('function.php');
+define('NL', "\n");
+require('IP4Calc.php');
+if(!isset($_POST['calculer'])) { ?>
+    <div class="content">
+        <div class="container-fluid">
+            <form method="post" action="index.php" enctype="multipart/form-data">
+                <label for="adresse">Saisir une adresse IPv4:</label>
+                <input type="text" name="adresse"/>
+                <label for="masque">Saisir le masque de sous réseau</label>
+                <select name="masque">
+                    <option value="255.0.0.0">255.0.0.0/8</option>
+                    <option value="255.128.0.0">255.128.0.0/9</option>
+                    <option value="255.192.0.0">255.192.0.0/10</option>
+                    <option value="255.224.0.0">255.224.0.0/11</option>
+                    <option value="255.240.0.0">255.240.0.0/12</option>
+                    <option value="255.248.0.0">255.248.0.0/13</option>
+                    <option value="255.252.0.0">255.252.0.0/14</option>
+                    <option value="255.254.0.0">255.254.0.0/15</option>
+                    <option value="255.255.0.0">255.255.0.0/16</option>
+                    <option value="255.255.128.0">255.255.128.0/17</option>
+                    <option value="255.255.192.0">255.255.192.0/18</option>
+                    <option value="255.255.224.0">255.255.224.0/19</option>
+                    <option value="255.255.240.0">255.255.240.0/20</option>
+                    <option value="255.255.248.0">255.255.248.0/21</option>
+                    <option value="255.255.252.0">255.255.252.0/22</option>
+                    <option value="255.255.254.0">255.255.254.0/23</option>
+                    <option value="255.255.255.0">255.255.255.0/24</option>
+                    <option value="255.255.255.128">255.255.255.128/25</option>
+                    <option value="255.255.255.192">255.255.255.192/26</option>
+                    <option value="255.255.255.224">255.255.255.224/27</option>
+                    <option value="255.255.255.240">255.255.255.240/28</option>
+                    <option value="255.255.255.248">255.255.255.248/29</option>
+                    <option value="255.255.255.252">255.255.255.252/30</option>
+                    <option value="255.255.255.254">255.255.255.254/31</option>
+                    <option value="255.255.255.255">255.255.255.255/32</option>
+                </select>
+                <input type="file" name="json"/>
+                <br/>
 
-if (!empty($_POST)) {
-    if (!empty($_POST['StartIP'])) {
-        echo 'IP start : '.$_POST['StartIP'].'<br/>';
-    }
-
-    if (!empty($_POST['EndIP'])) {
-        echo 'IP end : '.$_POST['EndIP'].'<br/>';
-    }
-
-    if (!empty($_POST['CIDR'])) {
-        echo 'CIDR : '.$_POST['CIDR'].'<br/>';
-    }
+                <input type="submit" name="calculer" value="calculer"/>
+            </form>
+        </div>
+    </div>
+    <?php
 }
+
+else {
+
+    $addr = trim(strip_tags($_POST['adresse']));
+    $mask = trim(strip_tags($_POST['masque']));
+
+
+    if (filter_var($addr, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
+
+        $serveur = array();
+
+        echo("$addr Address IP valide");
+
+        echo 'Adresse saisie : '.$addr.'/ masque :'.$mask;br();
+//echo('Test for 172.23.10.221/16'.NL);
+        $oIP = new IP4Calc($addr, $mask);
+        echo('masque sous-réseau (Quad): ' . $oIP->get(IP4Calc::NETMASK, IP4Calc::QUAD_DOTTED) . NL);
+        br();
+
+
+        echo('Réseaux (Quad): ' . $oIP->get(IP4Calc::NETWORK, IP4Calc::QUAD_DOTTED) . NL);
+        br();
+        echo('Broadcast (Quad): ' . $oIP->get(IP4Calc::BROADCAST, IP4Calc::QUAD_DOTTED) . NL);
+        br();
+        echo('Adresse IP la plus basse du sous-réseau (Quad): ' . $oIP->get(IP4Calc::MIN_HOST, IP4Calc::QUAD_DOTTED) . NL);
+        br(); $serveur[] = $oIP->get(IP4Calc::MIN_HOST, IP4Calc::QUAD_DOTTED) . NL;
+        echo('Adresse IP la plus haute du sous-réseau (Quad): ' . $oIP->get(IP4Calc::MAX_HOST, IP4Calc::QUAD_DOTTED) . NL);
+        br(); $serveur[] = $oIP->get(IP4Calc::MAX_HOST, IP4Calc::QUAD_DOTTED) . NL;
+        tab($oIP);
+        $addtest = '191.11.13.5';
+
+        $oIPT= new IP4Calc($addtest, $mask);
+        tab($oIPT);
+
+        var_dump($oIP->partOf('191.168.1.100'));
+
+
+
+        //echo('Adresse IP précédente(Quad): ' . $oIP->get(IP4Calc::PREVIOUS_HOST, IP4Calc::QUAD_DOTTED) . NL);
+        br();
+        //echo('Adresse IP suivante(Quad): ' . $oIP->get(IP4Calc::NEXT_HOST, IP4Calc::QUAD_DOTTED) . NL);
+        br();
+
+        echo('Nombre d\'adresses IP utilisables pour les hôtes de ce sous-réseau: ' . $oIP->count() . NL);
+        br();
+
+//}
+    } else {
+        echo("$addr  Address IP invalide");
+    }
+
+
+}
+
+
 
 if (isset($_FILES['json'])) {
 
@@ -48,8 +117,8 @@ if (isset($_FILES['json'])) {
         $errors = "Extension non autorisé, veuillez séléectionner un fichier .JSON";
     }
 
-    if ($file_size > 209715200) {
-        $errors = 'Le fichier doit être au maximum de 2 MB';
+    if ($file_size > 125000000) {
+        $errors = 'Le fichier doit être au maximum de 1 GB';
     }
 
     if (empty($errors) == false) {
@@ -227,9 +296,23 @@ if (isset($_FILES['json'])) {
 
         echo 'Communication IP à IP : ';
         echo '<div class="ip">';
+        $infraction = 0;
         foreach ($ipv4 as $key => $value) {
-            echo $key . ' => ' . $value . '<br/>';
+            $toto =array();
+            $toto = explode(' to ',$key);
+            foreach ($toto as $to) {
+
+                if( $oIP->partOf($to) == false )
+                {
+                    echo $key . ' => <span style="color :red;">' . $value . '</span><br/>';
+                    $infraction += $value ;
+                }else
+                {
+                    echo $key . ' => ' . $value . '<br/>';
+                }
+            }
         }
+        echo $infraction;
 
         echo '</div>';
         echo '<br/>';

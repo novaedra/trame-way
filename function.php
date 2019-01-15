@@ -8,3 +8,33 @@ function countprotocol($data,$protocols){
     else { $protocols[$protocol] = 1 ; } // sinon initialiser le nouveau protocol
     return $protocols;
 }
+
+function tab($array){
+  echo '<pre>';
+  print_r ($array);
+  echo '</pre>';
+}
+
+function br(){
+    echo '<br/>';
+}
+
+function generateRandomString($length){
+    $characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    $charsLength = strlen($characters) -1;
+    $string = "";
+    for($i=0; $i<$length; $i++){
+        $randNum = mt_rand(0, $charsLength);
+        $string .= $characters[$randNum];
+    }
+    return $string;
+}
+
+function isLogged(){
+  if(!empty($_SESSION['user']['id'])  && !empty($_SESSION['user']['mail']) && !empty($_SESSION['user']['status']) && !empty($_SESSION['user']['ip'])) {
+    if($_SESSION['user']['ip'] = $_SERVER['REMOTE_ADDR']){
+    return true;
+  }
+}
+return false;
+}
