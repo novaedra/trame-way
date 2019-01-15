@@ -1,49 +1,31 @@
-<html>
-<head>
-</head>
-<body>
-<center>
-
-    <div class="circle4" id="loading" >
-        <div class="circle3" id="loading" >
-            <div class="circle2" id="loading" >
-                <div class="circle1" id="loading" >
-                    <div class="circle" id="loading">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div></center>
-</body>
-</html>
-
+<form action="realtime.php" method="POST">
+    Nom du fichier : <input type="text" name="filename"><span>.JSON</span><br/>
+    <input type="submit"/>
+</form>
 <?php
-exec("sudo touch pcap/input.pcap;");
-echo 'fichier PCAP : Fait <br/>';
 
-exec("sudo chmod o=rw pcap/input.pcap;");
-echo 'Droits modifiés <br/>';
 
-exec("sudo tshark -c 10000 -w pcap/input.pcap -F libpcap;");
-echo 'Capture terminée <br/>';
 
-exec("sudo touch trames/output.json;");
-echo 'Fichier JSON : Fait <br/>';
-
-exec("sudo chmod o=rw trames/output.json;");
-echo 'Droits modifiés <br/>';
-
-exec("sudo tshark -r pcap/input.pcap -T json >trames/output.json;");
-echo 'JSON modifié <br/>';
-
-exec("sudo rm pcap/input.pcap;");
-echo 'Fichier PCAP effacé <br/>';
-
-$filename = '/var/www/html/trames/output.json';
-
-if (file_exists($filename)) {
-
+if (!empty($_POST['filename']) and is_string($_POST['filename'])) {
+    $filename = trim(strip_tags($_POST['filename'])).'.json';
 }
 else {
+    $filename = 'output.json';
+}
 
+exec("sudo touch pcap/input.pcap;");
+exec("sudo chmod o=rw pcap/input.pcap;");
+exec("sudo tshark -c 10000 -w pcap/input.pcap -F libpcap;");
+exec("sudo touch trames/".$filename.";");
+exec("sudo chmod o=rw trames/".$filename.";");
+exec("sudo tshark -r pcap/input.pcap -T json >trames/".$filename.";");
+exec("sudo rm pcap/input.pcap;");
+
+if (file_exists($filename)) {
+    if (filesize($filename) == false) {
+        echo 'fichier non rempli';
+    }
+    else {
+        echo 'le fichier est rempli';
+    }
 }
