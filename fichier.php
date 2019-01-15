@@ -142,73 +142,7 @@ if (isset($_FILES['json'])) {
                 }
             }
         }
-// --------------------------------------------------------------------------------------------------------------------
-        /*
 
-                foreach ($jsons as $json) { //lecture trame par trame
-
-                    if (!empty($json['_source']['layers']['ip']['ip.src']) and !empty($json['_source']['layers']['eth']['eth.src'])) { //si il y a une adresse ip source et mac source
-
-                        if (isset($tout[$json['_source']['layers']['eth']['eth.src']])) {   //si le tableau tout contient deja cette adresse mac
-                            $tout[$json['_source']['layers']['eth']['eth.src']] .= '<br/>'.$json['_source']['layers']['ip']['ip.src'];
-                        }
-                        else { //si le tableau tout ne contient pas cette adresse mac
-                            $tout[$json['_source']['layers']['eth']['eth.src']] = $json['_source']['layers']['ip']['ip.src'];
-                        }
-                    }
-
-                    if (!empty($json['_source']['layers']['ip']['ip.dst']) and !empty($json['_source']['layers']['eth']['eth.dst'])) {
-
-                        if (isset($tout[$nbrtrame][$json['_source']['layers']['eth']['eth.dst']])) {
-                            $tout[$json['_source']['layers']['eth']['eth.dst']] .= '<br/>'.$json['_source']['layers']['ip']['ip.dst'];
-                        }
-                        else {
-                            $tout[$json['_source']['layers']['eth']['eth.dst']] = $json['_source']['layers']['ip']['ip.dst'];
-                        }
-                    }
-
-                    if (!empty($json['_source']['layers']['ip']['ip.src']) and !isset($json['_source']['layers']['eth']['eth.src'])) {
-
-                        if (isset($tout['X'])) {
-                            $tout['X'] .= '<br/>'.$json['_source']['layers']['ip']['ip.src'];
-                        }
-                        else {
-                            $tout['X'] = $json['_source']['layers']['ip']['ip.src'];
-                        }
-                    }
-
-                    if (!empty($json['_source']['layers']['ip']['ip.dst']) and !isset($json['_source']['layers']['eth']['eth.dst'])) {
-
-                        if (isset($tout['X'])) {
-                            $tout['X'] .= '<br/>'.$json['_source']['layers']['ip']['ip.dst'];
-                        }
-                        else {
-                            $tout['X'] = $json['_source']['layers']['ip']['ip.dst'];
-                        }
-                    }
-                }
-
-                foreach ($tout as $key => $value) {
-                    $temp = explode('<br/>',$value);
-                    $temp = array_unique($temp);
-
-                    foreach ($temp as $valeur) {
-                        if (!empty($ipAndMac[$key])) {
-                            $ipAndMac[$key] .= '<br/>'.$valeur;
-                        }
-                        else {
-                            $ipAndMac[$key] = $valeur;
-                        }
-                    }
-                }
-
-                echo '<pre>';
-                print_r($ipAndMac);
-                echo '</pre>';
-                echo '<br/>';
-        */
-
-//-----------------------------------------------------------------------------------------------------------------------------------------------
         ?>
         <table>
             <caption><?php echo $file_name ?></caption>
@@ -325,12 +259,27 @@ if (isset($_FILES['json'])) {
 }
 
 ?>
-<style>
-    * {
-        text-align:center;
-        color:white;
-        margin: 0 auto;
-        background-color:black;
-        border:none;
-    }
-</style>
+
+<canvas id="polar-chart" width="800" height="450"></canvas>
+<script>
+    new Chart(document.getElementById("polar-chart"), {
+        type: 'polarArea',
+        data: {
+            labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+            datasets: [
+                {
+                    label: "Population (millions)",
+                    backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+                    data: [2478,5267,734,784,433]
+                }
+            ]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Predicted world population (millions) in 2050'
+            }
+        }
+    });
+</script>
+

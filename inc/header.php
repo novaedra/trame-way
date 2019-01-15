@@ -1,8 +1,10 @@
-<header class="header">
-    <a href="index.php" class="logo">TRAME-WAY</a>
-    <div class="header-right">
-        <a class="active" href="index.php">Acceuil</a>
-        <a href="fichier.php">Fichier</a>
-        <a href="capture.php">Capture temps réel</a>
-    </div>
-</header>
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Trame-Way</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300" type="text/css" />
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+</head>
+<body>
