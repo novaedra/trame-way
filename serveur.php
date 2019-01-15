@@ -1,5 +1,5 @@
 <?php
-include ('function.php');
+include('function.php');
 define('NL', "\n");
 require('IP4Calc.php');
 if(!isset($_POST['calculer'])) { ?>
