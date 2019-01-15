@@ -5,7 +5,8 @@ include ('inc/nav.php');
 ?>
 
 <form action="capture.php" method="POST">
-    Nom du fichier : <input type="text" name="filename"><span>.JSON</span><br/>
+    <span>Nom du fichier :<span/><br/>
+        <input type="text" name="filename"><span>.JSON</span><br/>
     <input type="submit" value="Capturer réseau"/>
 </form>
 <?php
