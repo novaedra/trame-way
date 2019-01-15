@@ -120,20 +120,19 @@ body {
 
 .fichier a img {
     height: 75%;
-    width:50%
-    float:center;
+    width: auto;
 }
 
 .capture {
     height: 99%;
     width: 45%;
+    border: ;
     float: right;
 }
 
 .capture a img {
     height: 75%;
-    width:50%
-    float:center;
+    width: auto;
 }
 
 .bloc_lien {
