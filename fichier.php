@@ -10,9 +10,9 @@ if(!isset($_POST['calculer'])) { ?>
     <div class="content">
         <div class="container-fluid">
             <form method="post" action="fichier.php" enctype="multipart/form-data">
-                <label for="adresse">Saisir une adresse IPv4:</label>
+                <label for="adresse">Saisir une adresse IPv4:</label><br/>
                 <input type="text" name="adresse"/></br>
-                <label for="masque">Saisir le masque de sous réseau</label>
+                <label for="masque">Saisir le masque de sous réseau</label><br/>
                 <select name="masque">
                     <option value="255.0.0.0">255.0.0.0/8</option>
                     <option value="255.128.0.0">255.128.0.0/9</option>

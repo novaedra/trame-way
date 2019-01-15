@@ -10,6 +10,8 @@ body {
     text-align: center;
     padding: 0;
     margin: 0;
+    color:white;
+    background-color: black;
 }
 
 .clear{clear:both; float:none;}
@@ -124,6 +126,9 @@ body {
     height: 99%;
     width: 45%;
     float: left;
+    border-radius: 10%;
+    box-shadow: -3px -3px 0px #8400ff, 3px 3px 0px #ff005a;
+    box
 }
 
 .fichier a img {
@@ -136,6 +141,8 @@ body {
     width: 45%;
     border: ;
     float: right;
+    border-radius: 10%;
+    box-shadow: -3px -3px 0px #8400ff, 3px 3px 0px #ff005a;
 }
 
 .capture a img {
@@ -146,11 +153,7 @@ body {
 .bloc_lien {
     padding-top: 10px;
     display: block;
-    background: linear-gradient(-45deg, mediumblue, darkblue, #2e2eb6, #163ab4);
-    background-size: 400% 400%;
-    -webkit-animation: Gradient 15s ease infinite;
-    -moz-animation: Gradient 15s ease infinite;
-    animation: Gradient 15s ease infinite;
+    background: white;
     font-family: 'Open Sans';
     height: 100%;
     width: auto;
@@ -165,12 +168,12 @@ body {
 }
 
 form {
-    background-color: lightgray;
-    padding:10px;
-    margin:0 auto;
+    background-color: black;
+    padding:30px;
+    margin: 10% auto;
     width:280px;
-    box-shadow:1px 1px 1px gray;
     width:50%;
+    box-shadow: -3px -3px 0px #8400ff, 3px 3px 0px #ff005a;
 }
 
 input, textarea, select, option {
@@ -179,10 +182,17 @@ input, textarea, select, option {
 
 input {
     width:25%;
+    margin: 10px;
 }
 
 input[type=submit] {
+    margin-top: 10px;
     width:15%;
+}
+
+input[type=file] {
+    color: black;
+    width:25%;
 }
 
 input, textarea, select {
@@ -191,6 +201,7 @@ input, textarea, select {
     border-radius:10px;
     box-shadow:1px 1px 2px gray inset;
 }
+
 select {
     margin-top:10px;
 }
