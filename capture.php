@@ -35,7 +35,7 @@ if (!empty($_POST)) {
     }
     ?>
     <br/>
-    <a title="Télécharger la capture que vous venez d\'effectuer" href="trames/<?php echo$filename.'json'; ?>">Télécharger la capture</a>;
+    <a title="Télécharger la capture que vous venez d\'effectuer" href="trames/<?php echo$filename.'.json'; ?>">Télécharger la capture</a>;
     <?php
 
     if (file_exists($filename.'.json')) {
