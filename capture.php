@@ -33,7 +33,10 @@ if (!empty($_POST)) {
         exec("sudo tshark -r pcap/input.pcap -T json >trames/".$filename.".json;");
         exec("sudo rm pcap/input.pcap;");
     }
-    ?> <a title="Télécharger la capture que vous venez d\'effectuer" href="trames/<?php echo$filename.'json'; ?>">Télécharger la capture</a>; <?php
+    ?>
+    <br/>
+    <a title="Télécharger la capture que vous venez d\'effectuer" href="trames/<?php echo$filename.'json'; ?>">Télécharger la capture</a>;
+    <?php
 
     if (file_exists($filename.'.json')) {
         if (filesize($filename.'.json') == false) {
