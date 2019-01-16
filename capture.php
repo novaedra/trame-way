@@ -21,7 +21,7 @@ if (isset($_POST)) {
 
     exec("sudo touch pcap/input.pcap;");
     exec("sudo chmod o=rw pcap/input.pcap;");
-    exec("sudo tshark -c 10000 -w pcap/input.pcap -F libpcap;");
+    exec("sudo tshark -c 100 -w pcap/input.pcap -F libpcap;");
     exec("sudo touch trames/".$filename.".json;");
     exec("sudo chmod o=rw trames/".$filename.".json;");
     exec("sudo tshark -r pcap/input.pcap -T json >trames/".$filename.".json;");
