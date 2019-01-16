@@ -12,11 +12,12 @@ if(!isset($_POST['calculer'])) { ?>
         <div class="container-fluid">
             <form method="post" action="fichier.php" enctype="multipart/form-data">
 
-                <label for="adresse">Saisir le nom du réseau:</label>
+                <label for="adresse">Saisir le nom du réseau:</label><br/>
                 <input type="text" name="nom_reseau"/></br>
-                <label for="adresse">Saisir une adresse IPv4:</label><br/>
 
+                <label for="adresse">Saisir une adresse IPv4:</label><br/>
                 <input type="text" name="adresse"/></br>
+
                 <label for="masque">Saisir le masque de sous réseau</label><br/>
                 <select name="masque">
                     <option value="255.0.0.0">255.0.0.0/8</option>
