@@ -1,0 +1,17 @@
+<svg id="1b7067f1-bccb-4bf0-b6c4-40b79bb780a6" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 286.00552 102.18491">
+  <defs>
+    <style>
+      .f7fe6b29-998c-4240-a726-a3f5f201145e {
+        fill: gray;
+      }
+
+      .b916a441-52d8-40a9-b448-a26ac8837ed7 {
+        fill: #0080ff;
+      }
+    </style>
+  </defs>
+  <title>shinkansen</title>
+  <path d="M427,437.85931s199-141.96955,267.5423-57.09366C694.5423,380.76565,624,339.88976,427,437.85931Z" transform="translate(-427 -353.71428)"/>
+  <path class="f7fe6b29-998c-4240-a726-a3f5f201145e" d="M427,445.88976s207-49,286-34C713,411.88976,718,322.88976,427,445.88976Z" transform="translate(-427 -353.71428)"/>
+  <path class="b916a441-52d8-40a9-b448-a26ac8837ed7" d="M427,450.88976S714,474,713,420.94488C713,420.94488,601,410.88976,427,450.88976Z" transform="translate(-427 -353.71428)"/>
+</svg>
