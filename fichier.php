@@ -1,4 +1,5 @@
 <?php
+include ('inc/pdo.php');
 include ('inc/function.php');
 include ('inc/header.php');
 include ('inc/nav.php');
@@ -10,6 +11,8 @@ if(!isset($_POST['calculer'])) { ?>
     <div class="content">
         <div class="container-fluid">
             <form method="post" action="fichier.php" enctype="multipart/form-data">
+                <label for="adresse">Saisir le nom du réseau:</label>
+                <input type="text" name="nom_reseau"/></br>
                 <label for="adresse">Saisir une adresse IPv4:</label>
                 <input type="text" name="adresse"/></br>
                 <label for="masque">Saisir le masque de sous réseau</label>
@@ -54,6 +57,7 @@ else {
 
     $addr = trim(strip_tags($_POST['adresse']));
     $mask = trim(strip_tags($_POST['masque']));
+    $nom_reseau = trim(strip_tags($_POST['nom_reseau']));
 
 
     if (filter_var($addr, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
@@ -234,6 +238,16 @@ if (isset($_FILES['json'])) {
         echo '</div>';
         echo '<br/>';
 
+        $sql = "INSERT INTO reseau (nom_reseau,ip_saisie,mask,ip_low,ip_high,created_at) VALUES (:nom_reseau,:addr,:mask,:ip_low,:ip_high , NOW())";
+        $query = $pdo -> prepare($sql);
+        $query -> bindValue(':nom_reseau', $nom_reseau, PDO::PARAM_STR);
+        $query -> bindValue(':addr', $addr, PDO::PARAM_STR);
+        $query -> bindValue(':mask', $mask, PDO::PARAM_STR);
+        $query -> bindValue(':ip_low', $oIP->get(IP4Calc::MIN_HOST, IP4Calc::QUAD_DOTTED), PDO::PARAM_STR);
+        $query -> bindValue(':ip_high', $oIP->get(IP4Calc::MAX_HOST, IP4Calc::QUAD_DOTTED), PDO::PARAM_STR);
+
+        $query -> execute();
+
         /* echo 'Communication MAC à MAC : ';
          echo '<div class="mac">';
          foreach ($mac as $key => $value) {
@@ -259,6 +273,12 @@ if (isset($_FILES['json'])) {
 else {
     echo("$addr  Address IP invalide");
 }
+
+
+
+
+
+
 }
 
 if (!empty($protocols)) {

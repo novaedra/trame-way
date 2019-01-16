@@ -1,9 +1,11 @@
 <?php
-define('FICHIER', 'trames/trames.json');
+
 if (!isset($_POST['valider'])) {
 
     ?>
-    <form method="POST">
+    <form action="" method="POST" enctype="multipart/form-data">
+        <label for="file">Selectioné un fichier</label>
+        <input type="file" name="file"/></br>
         <label for="mot">Mot recherché :</label><br/>
         <input type="text" name="mot" /><br/>
         <input type="submit" value="valider" name="valider"/>
@@ -16,11 +18,13 @@ if (!isset($_POST['valider'])) {
 else {
 
 
-    $mot=$_POST['mot'];;
+    $mot=trim(strip_tags($_POST['mot']));
+    $fichier =$_FILES['file']['name'];
+
 
 
     $resultats =array();
-    @ $fp = fopen(FICHIER, 'r') or die('Ouverture en lecture de "' . FICHIER . '" impossible !');
+    @ $fp = fopen($fichier, 'r') or die('Ouverture en lecture de "' . $fichier . '" impossible !');
     while (!feof($fp)) {
         $ligne = fgets($fp, 1024);
         if (preg_match('|\b' . preg_quote($_POST['mot']) . '\b|i', $ligne)) {
