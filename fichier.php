@@ -11,11 +11,15 @@ if(!isset($_POST['calculer'])) { ?>
     <div class="content">
         <div class="container-fluid">
             <form method="post" action="fichier.php" enctype="multipart/form-data">
+<<<<<<< HEAD
                 <label for="adresse">Saisir le nom du réseau:</label>
                 <input type="text" name="nom_reseau"/></br>
                 <label for="adresse">Saisir une adresse IPv4:</label>
+=======
+                <label for="adresse">Saisir une adresse IPv4:</label><br/>
+>>>>>>> b8620fbaeacc95d117f3fa8cc54b89a7249f9c78
                 <input type="text" name="adresse"/></br>
-                <label for="masque">Saisir le masque de sous réseau</label>
+                <label for="masque">Saisir le masque de sous réseau</label><br/>
                 <select name="masque">
                     <option value="255.0.0.0">255.0.0.0/8</option>
                     <option value="255.128.0.0">255.128.0.0/9</option>
@@ -288,10 +292,11 @@ if (!empty($protocols)) {
 
     ?>
 
-    <canvas id="bar-chart-horizontal" width="800" height="450"></canvas>
+    <canvas id="doughnut-chart" width="800" height="450"></canvas>
         <script>
-            new Chart(document.getElementById("bar-chart-horizontal"), {
-                type: 'horizontalBar',
+
+            new Chart(document.getElementById("doughnut-chart"), {
+                type: 'doughnut',
                 data: {
                     labels: [<?php foreach ($protocols as $key => $value) { $compteur++; ?>"<?php echo $key;?>"<?php if ($compteur != $total) { echo ','; }} ?>],
                     datasets: [
@@ -304,7 +309,6 @@ if (!empty($protocols)) {
                     ]
                 },
                 options: {
-                    legend: { display: false },
                     title: {
                         display: true,
                         text: 'Predicted world population (millions) in 2050'
