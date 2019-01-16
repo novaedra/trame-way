@@ -12,6 +12,7 @@ include ('inc/nav.php');
 <?php
 
 if (!empty($_POST)) {
+    print_r($_POST);
     if (!empty($_POST['filename']) and is_string($_POST['filename'])) {
         $filename = trim(strip_tags($_POST['filename']));
 
