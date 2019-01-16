@@ -12,10 +12,9 @@ include ('inc/nav.php');
 <?php
 
 if (!empty($_POST)) {
-    print_r($_POST);
     if (!empty($_POST['filename']) and is_string($_POST['filename'])) {
-        $filename = trim(strip_tags($_POST['filename']));
 
+        $filename = trim(strip_tags($_POST['filename']));
         exec("sudo touch pcap/input.pcap;");
         exec("sudo chmod o=rw pcap/input.pcap;");
         exec("sudo tshark -c 100 -w pcap/input.pcap -F libpcap;");
@@ -37,10 +36,10 @@ if (!empty($_POST)) {
 
     if (file_exists($filename.'.json')) {
         if (filesize($filename.'.json') == false) {
-            echo 'erreur lors de la création du fichier';
+            echo 'fichier non rempli';
         }
         else {
-            echo '<a title="Titre du lien" href="trames/'.$filename.".json".'>Télécharger Capture</a>';
+            echo 'le fichier est rempli';
         }
     }
 }
