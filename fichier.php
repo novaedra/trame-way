@@ -250,26 +250,6 @@ if (isset($_FILES['json'])) {
         $query -> bindValue(':ip_high', $oIP->get(IP4Calc::MAX_HOST, IP4Calc::QUAD_DOTTED), PDO::PARAM_STR);
 
         $query -> execute();
-
-        /* echo 'Communication MAC à MAC : ';
-         echo '<div class="mac">';
-         foreach ($mac as $key => $value) {
-             echo $key . ' => ' . $value . '<br/>';
-         }
-         echo '</div>';
-        echo '<br/>';
-
-         echo 'Liste des adresses IP : '.'<br/>'.count($ipList).' adresses IP différentes';
-         echo '<pre>';
-         print_r($ipList);
-         echo '</pre>';
-         echo '<br/>';
-
-         echo 'Liste des adresses MAC : '.'<br/>'.count($macList).' adresses MAC différentes';
-         echo '<pre>';
-         print_r($macList);
-         echo '</pre>';
-         echo '<br/>';*/
     }
 }
 }
