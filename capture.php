@@ -32,7 +32,7 @@ if (!empty($_POST)) {
         exec("sudo chmod o=rw trames/".$filename.".json;");
         exec("sudo tshark -r pcap/input.pcap -T json >trames/".$filename.".json;");
         exec("sudo rm pcap/input.pcap;");
-
+        echo '<a title="Titre du lien" href="trames/'.$filename.".json".'>Télécharger Capture</a>';
     }
 
     if (file_exists($filename.'.json')) {
