@@ -6,10 +6,8 @@ include ('inc/nav.php');
 
 define('NL', "\n");
 include('IP4Calc.php');
-
-if(empty($_POST['calculer'])) { ?>
-
-            <form method="post" action="reseau.php" enctype="multipart/form-data">
+?>
+            <form method="post" action="reseau.php">
 
                 <label for="adresse">Saisir le nom du réseau:</label><br/>
                 <input type="text" name="nom_reseau"/></br>
@@ -44,14 +42,12 @@ if(empty($_POST['calculer'])) { ?>
                     <option value="255.255.255.252">255.255.255.252/30</option>
                     <option value="255.255.255.254">255.255.255.254/31</option>
                     <option value="255.255.255.255">255.255.255.255/32</option>
-                </select></br>
-
+                </select>
+                </br>
 
                 <input type="submit" name="calculer" value="calculer"/>
             </form>
-    <?php
-}
-
+<?php
 else {
 
     $addr = trim(strip_tags($_POST['adresse']));
@@ -75,11 +71,11 @@ else {
         $query -> execute();
     }
     else {
-        echo $addr.'Adresse IP invalide verifiez que l\'adresse  entrer  est une adresse valide ';br();
-        echo '<a href="fichier.php">retour</a>';
+        echo $addr.'Adresse IP invalide verifiez que l\'adresse  entrer  est une adresse valide ';
+        br();
+        echo '<a href="reseau.php">retour</a>';
     }
 }
-
 ?>
 
 <form action="reseau.php" method="POST">

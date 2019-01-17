@@ -260,9 +260,6 @@ else {
 
 
 
-
-
-
 }
 
 if (!empty($protocols)) {
