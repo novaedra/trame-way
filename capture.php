@@ -47,8 +47,6 @@ if (!empty($_POST)) {
     exec("sudo chmod o=rw trames/" . $filename . ".json;");
     exec("sudo tshark -r pcap/input.pcap -T json >trames/" . $filename . ".json;");
     exec("sudo rm pcap/input.pcap;");
-    exec("sudo at now +1 hours;");
-    exec("sudo rm /var/www/html/trames/" . $filename . ".json;");
 
     ?>
     <br/>
