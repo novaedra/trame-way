@@ -58,6 +58,9 @@ if (!empty($_POST)) {
         if (is_readable("/var/www/html/trames/". $filename . ".json;")) {
             exec("sudo sleep 1m; sudo rm /var/www/html/trames/". $filename . ".json;");
         }
+        else {
+            echo 'pas dispo';
+        }
     }
 }
 else { ?>
