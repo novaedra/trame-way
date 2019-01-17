@@ -3,6 +3,8 @@ include ('inc/function.php');
 include ('inc/header.php');
 include ('inc/nav.php');
 
+phpinfo();
+
 if (!empty($_POST)) {
 
     if (!empty($_POST['filename']) and is_string($_POST['filename'])) {
