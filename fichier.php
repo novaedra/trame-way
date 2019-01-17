@@ -183,7 +183,7 @@ if (isset($_FILES['json'])) {
                 <th>Adresse broadcast</th>
                 <th>Adresse la plus basse du réseau</th>
                 <th>Adresse la plus haute du réseau</th>
-                <th>Nombre hots sous réseau</th>
+                <th>Nombre hôtes sous réseau</th>
             </tr>
             </thead>
 
