@@ -25,18 +25,14 @@ if (!empty($_POST)) {
         if($_POST['format'] == 'trame') {
             $parametre = ' -c '.$nombre;
         }
-        else {
-            $parametre = ' -c 10';
-        }
-
-        echo $parametre.'<br/>';
-        echo $nombre.'<br/>';
-
-        if ($_POST['format'] == 'temps' and $parametre == false) {
+        if ($_POST['format'] == 'temps') {
             if ($nombre >= 3600 or $nombre <= 10) {
                 $nombre = 10;
             }
             $parametre = ' -a duration:'.$nombre;
+        }
+        if ($parametre == false) {
+            $parametre = ' -c 10';
         }
     }
     else {
