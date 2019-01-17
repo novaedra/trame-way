@@ -28,6 +28,10 @@ if (!empty($_POST)) {
         else {
             $parametre = ' -c 10';
         }
+
+        echo $parametre.'<br/>';
+        echo $nombre.'<br/>';
+
         if ($_POST['format'] == 'temps' and $parametre == false) {
             if ($nombre >= 3600 or $nombre <= 10) {
                 $nombre = 10;
@@ -40,8 +44,6 @@ if (!empty($_POST)) {
     }
 
     echo $_POST['format'].'<br/>';
-    echo $parametre.'<br/>';
-    echo $nombre.'<br/>';
     echo "sudo tshark". $parametre ." -w pcap/input.pcap -F libpcap;".'<br/>';
 
     exec("sudo touch pcap/input.pcap;");
