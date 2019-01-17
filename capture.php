@@ -39,7 +39,10 @@ if (!empty($_POST)) {
         $parametre = ' -c 10';
     }
 
-    echo "sudo tshark". $parametre ." -w pcap/input.pcap -F libpcap;";
+    echo $_POST['format'].'<br/>';
+    echo $parametre.'<br/>';
+    echo $nombre.'<br/>';
+    echo "sudo tshark". $parametre ." -w pcap/input.pcap -F libpcap;".'<br/>';
 
     exec("sudo touch pcap/input.pcap;");
     exec("sudo chmod o=rw pcap/input.pcap;");
