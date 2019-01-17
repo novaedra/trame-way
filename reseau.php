@@ -12,6 +12,17 @@ $return = $query -> fetchALL();
 tab($return);
 
 if (!empty($_POST)) {
+
+    foreach ($_POST as $key => $value) {
+        $key = trim(strip_tags($key));
+        if (is_numeric($key)) {
+
+            $sql = "DELETE FROM reseau WHERE id=:id;";
+            $query = $pdo -> prepare($sql);
+            $query->bindValue(':id', $key, PDO::PARAM_INT);
+            $query -> execute();
+        }
+    }
     tab($_POST);
 }
 
