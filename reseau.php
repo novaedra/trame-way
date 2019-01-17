@@ -10,6 +10,8 @@ $query -> execute();
 $return = $query -> fetchALL();
 tab($return);
 
+echo '<form action="reseau.php" method="POST">';
+
 if (!empty($_POST)) {
 
     foreach ($_POST as $key => $value) {
@@ -31,10 +33,6 @@ else {
         <input type="checkbox" name="<?php echo $var['id']; ?>" value="supprime moi vite stp"><?php echo $var['nom_reseau']; ?></input><br/>
     <?php }
 }
-
-echo '<form action="reseau.php" method="POST">';
-
-
 
 echo '<input type="submit" value="Supprimer"></input>';
 echo '</form>';
