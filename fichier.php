@@ -274,7 +274,8 @@ if (isset($_FILES['json'])) {
 }
 }
 else {
-    echo("$addr  Address IP invalide");
+    echo $addr.'Adresse IP invalide verifiez que l\'adresse  entrer  est une adresse valide ';br();
+    echo '<a href="fichier.php">retour</a>';
 }
 
 
