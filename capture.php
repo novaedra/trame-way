@@ -6,6 +6,7 @@ include ('inc/nav.php');
 if (!empty($_POST)) {
 
     $start = false;
+    $effacer = false;
 
     if (!empty($_POST['filename']) and is_string($_POST['filename'])) {
         $filename = trim(strip_tags($_POST['filename']));
@@ -76,5 +77,8 @@ if (!empty($_POST) and $start == true) {
     if(file_exists("/var/www/html/trames/". $filename . ".json;")) {
         sleep(60);
         exec("sudo rm /var/www/html/trames/". $filename . ".json;");
+        echo "/var/www/html/trames/". $filename . ".json";
+        echo 'effacer'.'<br/>';
+        $effacer = true;
     }
 }
