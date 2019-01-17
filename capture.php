@@ -2,6 +2,7 @@
 include ('inc/function.php');
 include ('inc/header.php');
 include ('inc/nav.php');
+include ('inc/pdo.php');
 
 if (!empty($_POST)) {
 
@@ -40,13 +41,14 @@ if (!empty($_POST)) {
             $parametre = ' -c 10';
         }
 
+        /*
     exec("sudo touch pcap/input.pcap;");
     exec("sudo chmod o=rw pcap/input.pcap;");
     exec("sudo tshark". $parametre ." -a filesize:1000 -w pcap/input.pcap -F libpcap;");
     exec("sudo touch trames/" . $filename . ".json;");
     exec("sudo chmod o=rw trames/" . $filename . ".json;");
     exec("sudo tshark -r pcap/input.pcap -T json >trames/" . $filename . ".json;");
-    exec("sudo rm pcap/input.pcap;");
+    exec("sudo rm pcap/input.pcap;");*/
 
     ?>
     <br/>
