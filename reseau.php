@@ -4,8 +4,8 @@ include ('inc/function.php');
 include ('inc/header.php');
 include ('inc/nav.php');
 
-$sql = "SELECT * FROM trame_way ";
+$sql = "SELECT * FROM reseau ";
 $query = $pdo -> prepare($sql);
-$return = $query -> fetchAll();
-}
+$return = $query -> fetch();
+
 tab($return);
