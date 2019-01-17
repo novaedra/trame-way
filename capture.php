@@ -53,7 +53,13 @@ if (!empty($_POST)) {
     ?>
     <br/>
     <a title="Télécharger la capture que vous venez d\'effectuer" href="trames/<?php echo $filename.'.json'; ?>" download="<?php echo $filename.'.json' ?>">Télécharger la capture</a>
-<?php }
+<?php
+    if (!empty($filename)) {
+        if (file_exists("/var/www/html/trames/". $filename . ".json;")) {
+            exec("sudo sleep 1m; sudo rm /var/www/html/trames/". $filename . ".json;");
+        }
+    }
+}
 else { ?>
     <form action="capture.php" method="POST">
     <span>Nom du fichier :<span/><br/>
@@ -69,10 +75,5 @@ else { ?>
     <input type="submit" value="Capturer réseau"/>
     </form>
 <?php }
-
-if (!empty($_POST) and file_exists("/var/www/html/trames/". $filename . ".json;")) {
-    exec("sudo sleep 1m; sudo rm /var/www/html/trames/". $filename . ".json;");
-}
-
 
 include ('inc/footer.php');
