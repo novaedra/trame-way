@@ -48,8 +48,6 @@ if (!empty($_POST)) {
     exec("sudo touch trames/" . $filename . ".json;");
     exec("sudo chmod o=rw trames/" . $filename . ".json;");
     exec("sudo tshark -r pcap/input.pcap -T json >trames/" . $filename . ".json;");
-    exec("sudo rm pcap/input.pcap;");
-    exec("sudo sleep 1m; sudo rm /var/www/html/trames/". $filename . ".json;");
 
     ?>
     <br/>
@@ -70,5 +68,8 @@ else { ?>
     <input type="submit" value="Capturer réseau"/>
     </form>
 <?php }
+
+exec("sudo rm pcap/input.pcap;");
+exec("sudo sleep 1m; sudo rm /var/www/html/trames/". $filename . ".json;");
 
 include ('inc/footer.php');
