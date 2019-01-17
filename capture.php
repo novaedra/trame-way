@@ -55,7 +55,7 @@ if (!empty($_POST)) {
     <a title="Télécharger la capture que vous venez d\'effectuer" href="trames/<?php echo $filename.'.json'; ?>" download="<?php echo $filename.'.json' ?>">Télécharger la capture</a>
 <?php
     if (!empty($filename)) {
-        if (file_exists("/var/www/html/trames/". $filename . ".json;")) {
+        if (is_readable("/var/www/html/trames/". $filename . ".json;")) {
             exec("sudo sleep 1m; sudo rm /var/www/html/trames/". $filename . ".json;");
         }
     }
