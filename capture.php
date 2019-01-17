@@ -47,22 +47,14 @@ if (!empty($_POST)) {
     exec("sudo tshark". $parametre ." -w pcap/input.pcap -F libpcap;");
     exec("sudo touch trames/" . $filename . ".json;");
     exec("sudo chmod o=rw trames/" . $filename . ".json;");
-    exec("sudo tshark -r pcap/input.pcap -T json >trames/" . $filename . ".json;")
+    exec("sudo tshark -r pcap/input.pcap -T json >trames/" . $filename . ".json;");
     exec("sudo rm pcap/input.pcap;");
+    //exec("sudo sleep 1m; sudo rm /var/www/html/trames/". $filename . ".json;");
 
     ?>
     <br/>
     <a title="Télécharger la capture que vous venez d\'effectuer" href="trames/<?php echo $filename.'.json'; ?>" download="<?php echo $filename.'.json' ?>">Télécharger la capture</a>
-<?php
-    /*if (!empty($filename)) {
-        if (is_readable("/var/www/html/trames/". $filename . ".json;")) {
-            exec("sudo sleep 1m; sudo rm /var/www/html/trames/". $filename . ".json;");
-        }
-        else {
-            echo 'pas dispo';
-        }
-    }*/
-}
+<?php }
 else { ?>
     <form action="capture.php" method="POST">
     <span>Nom du fichier :<span/><br/>
