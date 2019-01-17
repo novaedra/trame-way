@@ -14,5 +14,5 @@ tab($return);
 echo '<form method="post">';
 
 foreach ($return as $var) {
-    echo '<input type="chechbox" name="reseau" value="'.$var[0]['id'].'">'.$var[0]['id'].': Nom du réseau : '.$var[0]['nom_reseau'].'ip : '.$var[0]['ip_saisie'].' masque : '.$var[0]['mask'].'ip - : '.$var[0]['ip_low'].' ip + : '.$var[0]['ip_high'].' date :'.$var[0]['created_at'].'</input>';
+    echo '<input type="checkbox" name="reseau" value="'.$var['id'].'">'.$var['id'].': Nom du réseau : '.$var['nom_reseau'].'ip : '.$var'ip_saisie'].' masque : '.$var['mask'].'ip - : '.$var['ip_low'].' ip + : '.$var['ip_high'].' date :'.$var['created_at'].'</input>';
 }
