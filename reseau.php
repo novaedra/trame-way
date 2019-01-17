@@ -8,6 +8,7 @@ $sql = "SELECT * FROM reseau;";
 $query = $pdo -> prepare($sql);
 $query -> execute();
 $return = $query -> fetchALL();
+tab($return);
 
 if (!empty($_POST)) {
 
@@ -21,7 +22,6 @@ if (!empty($_POST)) {
             $query -> execute();
         }
     }
-    tab($_POST);
     foreach ($return as $var) { ?>
         <input type="checkbox" name="<?php echo $var['id']; ?>" value="supprime moi vite stp"><?php echo $var['nom_reseau']; ?></input><br/>
     <?php }
