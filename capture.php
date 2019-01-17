@@ -29,6 +29,7 @@ if (!empty($_POST)) {
                 $parametre = ' -c 10';
             }
             if ($_POST['format'] == 'temps' and $parametre == false) {
+                if ($nombre >=  )
                 $parametre = ' -a duration:'.$nombre;
             }
             else if ($parametre == false) {
@@ -41,11 +42,13 @@ if (!empty($_POST)) {
 
     exec("sudo touch pcap/input.pcap;");
     exec("sudo chmod o=rw pcap/input.pcap;");
-    exec("sudo tshark". $parametre ." -w pcap/input.pcap -F libpcap;");
+    exec("sudo tshark". $parametre ." -a filesize:1000 -w pcap/input.pcap -F libpcap;");
     exec("sudo touch trames/" . $filename . ".json;");
     exec("sudo chmod o=rw trames/" . $filename . ".json;");
     exec("sudo tshark -r pcap/input.pcap -T json >trames/" . $filename . ".json;");
     exec("sudo rm pcap/input.pcap;");
+    exec("sudo sleep 1h;");
+    exec("sudo rm trames/" . $filename . ".json;");
 
     ?>
     <br/>
