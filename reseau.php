@@ -4,7 +4,7 @@ include ('inc/function.php');
 include ('inc/header.php');
 include ('inc/nav.php');
 
-$sql = "SELECT nom_resau,ip_saisie,mask,ip_low,ip_high,created_at FROM trame_way";
+$sql = "SELECT nom_resau,ip_saisie,mask,ip_low,ip_high,created_at FROM trame_waygit ";
 
 $req = mysqli_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysqli_error());
 while($data = mysqli_fetch_assoc($req))
