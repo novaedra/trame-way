@@ -6,5 +6,6 @@ include ('inc/nav.php');
 
 $sql = "SELECT * FROM reseau;";
 $query = $pdo -> prepare($sql);
+$query -> execute();
 $return = $query -> fetchALL();
 tab($return);
