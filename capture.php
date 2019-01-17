@@ -5,6 +5,8 @@ include ('inc/nav.php');
 
 if (!empty($_POST)) {
 
+    $start = false;
+
     if (!empty($_POST['filename']) and is_string($_POST['filename'])) {
         $filename = trim(strip_tags($_POST['filename']));
     }
@@ -39,9 +41,6 @@ if (!empty($_POST)) {
         $parametre = ' -c 10';
     }
 
-    echo $_POST['format'].'<br/>';
-    echo "sudo tshark". $parametre ." -w pcap/input.pcap -F libpcap;".'<br/>';
-
     exec("sudo touch pcap/input.pcap;");
     exec("sudo chmod o=rw pcap/input.pcap;");
     exec("sudo tshark". $parametre ." -w pcap/input.pcap -F libpcap;");
@@ -49,7 +48,7 @@ if (!empty($_POST)) {
     exec("sudo chmod o=rw trames/" . $filename . ".json;");
     exec("sudo tshark -r pcap/input.pcap -T json >trames/" . $filename . ".json;");
     exec("sudo rm pcap/input.pcap;");
-    //exec("sudo sleep 1m; sudo rm /var/www/html/trames/". $filename . ".json;");
+    $start = true;
 
     ?>
     <br/>
@@ -72,3 +71,10 @@ else { ?>
 <?php }
 
 include ('inc/footer.php');
+
+if (!empty($_POST) and $start == true) {
+    if(file_exists("/var/www/html/trames/". $filename . ".json;")) {
+        sleep(60);
+        exec("sudo rm /var/www/html/trames/". $filename . ".json;");
+    }
+}
