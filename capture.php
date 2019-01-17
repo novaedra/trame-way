@@ -2,45 +2,70 @@
 include ('inc/function.php');
 include ('inc/header.php');
 include ('inc/nav.php');
-?>
-
-<form action="capture.php" method="POST">
-    <span>Nom du fichier :<span/><br/>
-        <input type="text" name="filename"><span>.JSON</span><br/>
-    <input type="submit" value="Capturer réseau"/>
-</form>
-<?php
 
 if (!empty($_POST)) {
-    if (!empty($_POST['filename']) and is_string($_POST['filename'])) {
 
+    if (!empty($_POST['filename']) and is_string($_POST['filename'])) {
         $filename = trim(strip_tags($_POST['filename']));
-        exec("sudo touch pcap/input.pcap;");
-        exec("sudo chmod o=rw pcap/input.pcap;");
-        exec("sudo tshark -c 100 -w pcap/input.pcap -F libpcap;");
-        exec("sudo touch trames/".$filename.".json;");
-        exec("sudo chmod o=rw trames/".$filename.".json;");
-        exec("sudo tshark -r pcap/input.pcap -T json >trames/".$filename.".json;");
-        exec("sudo rm pcap/input.pcap;");
     }
     else {
         $filename = 'output';
-        exec("sudo touch pcap/input.pcap;");
-        exec("sudo chmod o=rw pcap/input.pcap;");
-        exec("sudo tshark -c 100 -w pcap/input.pcap -F libpcap;");
-        exec("sudo touch trames/".$filename.".json;");
-        exec("sudo chmod o=rw trames/".$filename.".json;");
-        exec("sudo tshark -r pcap/input.pcap -T json >trames/".$filename.".json;");
-        exec("sudo rm pcap/input.pcap;");
     }
-    echo '<a title="Télécharger la capture que vous venez d\'effectuer" href="trames/"'.$filename.".json"'>Télécharger la capture</a>';
 
-    if (file_exists($filename.'.json')) {
-        if (filesize($filename.'.json') == false) {
-            echo 'fichier non rempli';
+    if(!empty($_POST['format'])){
+
+        $parametre = false;
+
+            if (!empty($_POST['nombre']) and is_numeric($_POST['nombre']) and $_POST['nombre'] >= 10 and $_POST['nombre'] <= 1000000){
+                $nombre = trim(strip_tags($_POST['nombre']));
+            }
+            else {
+                $nombre = 10;
+            }
+            if($_POST['format'] == 'trame') {
+                $parametre = ' -c '.$nombre;
+            }
+            else {
+                $parametre = ' -c 10';
+            }
+            if ($_POST['format'] == 'temps' and $parametre == false) {
+                if ($nombre >=  )
+                $parametre = ' -a duration:'.$nombre;
+            }
+            else if ($parametre == false) {
+                $parametre = ' -a duration:10';
+            }
         }
         else {
-            echo 'le fichier est rempli';
+            $parametre = ' -c 10';
         }
-    }
-}
+
+    exec("sudo touch pcap/input.pcap;");
+    exec("sudo chmod o=rw pcap/input.pcap;");
+    exec("sudo tshark". $parametre ." -a filesize:1000 -w pcap/input.pcap -F libpcap;");
+    exec("sudo touch trames/" . $filename . ".json;");
+    exec("sudo chmod o=rw trames/" . $filename . ".json;");
+    exec("sudo tshark -r pcap/input.pcap -T json >trames/" . $filename . ".json;");
+    exec("sudo rm pcap/input.pcap;");
+
+    ?>
+    <br/>
+    <a title="Télécharger la capture que vous venez d\'effectuer" href="trames/<?php echo $filename.'.json'; ?>" download="<?php echo $filename.'.json' ?>">Télécharger la capture</a>
+<?php }
+else { ?>
+    <form action="capture.php" method="POST">
+    <span>Nom du fichier :<span/><br/>
+        <input type="text" name="filename"/><span>.JSON</span><br/>
+        <span>selection format:</span>
+
+        <select name="format">
+            <option value="temps">Temps</option>
+            <option value="trame">Nombre de trame</option>
+        </select>
+        <input type="number" name="nombre"/>
+
+    <input type="submit" value="Capturer réseau"/>
+</form>
+<?php }
+
+    include ('inc/footer.php');
