@@ -11,6 +11,10 @@ $return = $query -> fetchALL();
 
 tab($return);
 
+if (!empty($_POST)) {
+    print_r($_POST);
+}
+
 echo '<form action="reseau.php" method="POST">';
 
 foreach ($return as $var) { ?>
