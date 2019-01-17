@@ -29,10 +29,10 @@ if (!empty($_POST)) {
             $parametre = ' -c 10';
         }
         if ($_POST['format'] == 'temps' and $parametre == false) {
+            if ($nombre >= 3600 or $nombre <= 10) {
+                $nombre = 10;
+            }
             $parametre = ' -a duration:'.$nombre;
-        }
-        else if ($parametre == false) {
-            $parametre = ' -a duration:10';
         }
     }
     else {
