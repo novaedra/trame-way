@@ -73,11 +73,13 @@ else { ?>
 
 include ('inc/footer.php');
 
+echo 'start : '.$start.'<br/>';
+echo "/var/www/html/trames/". $filename . ".json".'<br/>';
+
 if (!empty($_POST) and $start == true) {
     if(file_exists("/var/www/html/trames/". $filename . ".json;")) {
-        sleep(60);
+        sleep(10);
         exec("sudo rm /var/www/html/trames/". $filename . ".json;");
-        echo "/var/www/html/trames/". $filename . ".json";
         echo 'effacer'.'<br/>';
         $effacer = true;
     }
