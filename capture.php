@@ -3,8 +3,6 @@ include ('inc/function.php');
 include ('inc/header.php');
 include ('inc/nav.php');
 
-phpinfo();
-
 if (!empty($_POST)) {
 
     if (!empty($_POST['filename']) and is_string($_POST['filename'])) {
@@ -18,33 +16,32 @@ if (!empty($_POST)) {
 
         $parametre = false;
 
-            if (!empty($_POST['nombre']) and is_numeric($_POST['nombre']) and $_POST['nombre'] >= 10 and $_POST['nombre'] <= 1000000){
-                $nombre = trim(strip_tags($_POST['nombre']));
-            }
-            else {
-                $nombre = 10;
-            }
-            if($_POST['format'] == 'trame') {
-                $parametre = ' -c '.$nombre;
-            }
-            else {
-                $parametre = ' -c 10';
-            }
-            if ($_POST['format'] == 'temps' and $parametre == false) {
-                if ($nombre >=  )
-                $parametre = ' -a duration:'.$nombre;
-            }
-            else if ($parametre == false) {
-                $parametre = ' -a duration:10';
-            }
+        if (!empty($_POST['nombre']) and is_numeric($_POST['nombre']) and $_POST['nombre'] >= 10 and $_POST['nombre'] <= 1000000){
+            $nombre = trim(strip_tags($_POST['nombre']));
+        }
+        else {
+            $nombre = 10;
+        }
+        if($_POST['format'] == 'trame') {
+            $parametre = ' -c '.$nombre;
         }
         else {
             $parametre = ' -c 10';
         }
+        if ($_POST['format'] == 'temps' and $parametre == false) {
+            if ($nombre >= 3600 or $nombre <= 10) {
+                $nombre = 10;
+            }
+            $parametre = ' -a duration:'.$nombre;
+        }
+    }
+    else {
+        $parametre = ' -c 10';
+    }
 
     exec("sudo touch pcap/input.pcap;");
     exec("sudo chmod o=rw pcap/input.pcap;");
-    exec("sudo tshark". $parametre ." -a filesize:1000 -w pcap/input.pcap -F libpcap;");
+    exec("sudo tshark". $parametre ." -w pcap/input.pcap -F libpcap;");
     exec("sudo touch trames/" . $filename . ".json;");
     exec("sudo chmod o=rw trames/" . $filename . ".json;");
     exec("sudo tshark -r pcap/input.pcap -T json >trames/" . $filename . ".json;");
@@ -67,7 +64,7 @@ else { ?>
         <input type="number" name="nombre"/>
 
     <input type="submit" value="Capturer réseau"/>
-</form>
+    </form>
 <?php }
 
-    include ('inc/footer.php');
+include ('inc/footer.php');
