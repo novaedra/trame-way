@@ -9,7 +9,7 @@ include('IP4Calc.php');
 
 if(empty($_POST['calculer'])) { ?>
 
-            <form method="post" action="fichier.php" enctype="multipart/form-data">
+            <form method="post" action="reseau.php" enctype="multipart/form-data">
 
                 <label for="adresse">Saisir le nom du réseau:</label><br/>
                 <input type="text" name="nom_reseau"/></br>
