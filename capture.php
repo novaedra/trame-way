@@ -47,7 +47,8 @@ if (!empty($_POST)) {
     exec("sudo tshark". $parametre ." -w pcap/input.pcap -F libpcap;");
     exec("sudo touch trames/" . $filename . ".json;");
     exec("sudo chmod o=rw trames/" . $filename . ".json;");
-    exec("sudo tshark -r pcap/input.pcap -T json >trames/" . $filename . ".json;");
+    exec("sudo tshark -r pcap/input.pcap -T json >trames/" . $filename . ".json;")
+    exec("sudo rm pcap/input.pcap;");
 
     ?>
     <br/>
@@ -69,7 +70,9 @@ else { ?>
     </form>
 <?php }
 
-exec("sudo rm pcap/input.pcap;");
-exec("sudo sleep 1m; sudo rm /var/www/html/trames/". $filename . ".json;");
+if (!empty($_POST) and file_exists("/var/www/html/trames/". $filename . ".json;")) {
+    exec("sudo sleep 1m; sudo rm /var/www/html/trames/". $filename . ".json;");
+}
+
 
 include ('inc/footer.php');
