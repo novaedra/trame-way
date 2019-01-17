@@ -13,6 +13,6 @@ tab($return);
 
 echo '<form method="post">';
 
-foreach ($return as $var) {
-    ?><input type="checkbox" name="reseau" value="<?php echo $var['id']; ?>"><?php echo $var['nom_reseau']; ?></input> <?php
-}
+foreach ($return as $var) { ?>
+    <input type="checkbox" name="reseau" value="<?php echo $var['id']; ?>"><?php echo $var['nom_reseau']; ?></input><br/>
+<?php }
