@@ -25,7 +25,6 @@ if (!empty($_POST)) {
     $query = $pdo -> prepare($sql);
     $query -> execute();
     $return = $query -> fetchALL();
-    tab($return);
 
     foreach ($return as $var) { ?>
         <input type="checkbox" name="<?php echo $var['id']; ?>" value="supprime moi vite stp"><?php echo $var['nom_reseau']; ?></input><br/>
@@ -37,7 +36,6 @@ else {
     $query = $pdo -> prepare($sql);
     $query -> execute();
     $return = $query -> fetchALL();
-    tab($return);
 
     foreach ($return as $var) { ?>
         <input type="checkbox" name="<?php echo $var['id']; ?>" value="supprime moi vite stp"><?php echo $var['nom_reseau']; ?></input><br/>
