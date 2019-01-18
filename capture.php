@@ -21,7 +21,8 @@ include ('inc/header.php');
             <option value="temps">Temps</option>
             <option value="trame">Nombre de trame</option>
         </select>
-        <input class="temps" type="number" name="nombre" placeholder="Trames ou Temps (en secondes)"/>
+        <br/>
+        <input class="temps" type="number" name="nombre" placeholder="Trames ou Temps (en secondes)"/><br/>
 
     <input type="submit" name="capture" value="Capturer réseau"/>
     </form>
