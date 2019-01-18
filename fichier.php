@@ -4,29 +4,6 @@ include ('inc/function.php');
 include ('inc/header.php');
 include ('inc/nav.php');
 
-    $sql = "SELECT * FROM reseau;";
-    $query = $pdo -> prepare($sql);
-    $query -> execute();
-    $SRSX = $query -> fetchALL();
-
-    foreach ($SRSX as $cle => $value){
-        foreach ($value as $key => $valeur) {
-
-            if ($key == 'id' and $valeur) {
-                $infraction[$key] = $valeur;
-            }
-            if ($key == 'ip_low' and $valeur) {
-                $infraction[$key] = $valeur;
-            }
-            if ($key == 'ip_high' and $valeur) {
-                $infraction[$key] = $valeur;
-            }
-            $infraction['erreur'] = 0;
-        }
-    }
-    tab($infraction);
-}
-
 if(!isset($_POST['analyser'])) { ?>
     <div class="content">
         <div class="container-fluid">
@@ -83,8 +60,6 @@ else {
 
                     $sourceIpv4 = $json['_source']['layers']['ip']['ip.src'];
                     $destinataireIpv4 = $json['_source']['layers']['ip']['ip.dst']; //adresse IPV4
-
-
 
                     if (array_key_exists($sourceIpv4 . ' to ' . $destinataireIpv4, $ipv4)) {
                         $ipv4[$sourceIpv4 . ' to ' . $destinataireIpv4]++;
@@ -155,6 +130,29 @@ else {
 }
 
 if (!empty($protocols)) {
+
+    $sql = "SELECT * FROM reseau;";
+    $query = $pdo -> prepare($sql);
+    $query -> execute();
+    $SRSX = $query -> fetchALL();
+
+    foreach ($SRSX as $cle => $value){
+        foreach ($value as $key => $valeur) {
+
+            if ($key == 'id') {
+                $infraction[$key] = $valeur;
+            }
+            if ($key == 'ip_low') {
+                $infraction[$key] = $valeur;
+            }
+            if ($key == 'ip_high') {
+                $infraction[$key] = $valeur;
+            }
+            $infraction['erreur'] = 0;
+        }
+    }
+
+    tab($infraction);
 
     $total = count($protocols);
     $compteur = 0;
