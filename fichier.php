@@ -3,8 +3,8 @@ include ('inc/pdo.php');
 include ('inc/function.php');
 include ('inc/header.php');
 include ('inc/nav.php');
-
-include ('IP4Calc.php');
+define('NL', "\n");
+require ('IP4Calc.php');
 
 if(!isset($_POST['analyser'])) { ?>
     <div class="content">
@@ -158,7 +158,7 @@ if (!empty($protocols)) {
                 if ($key == 'ip_high') {
                     $infraction[$cle][$key] = $valeur;
                 }
-                $infraction[$value['id']]['infraction'] = 0;
+                $infraction[$cle]['infraction'] = 0;
                 $mask = $value['mask'];
                 $low = $value['ip_low'];
 
