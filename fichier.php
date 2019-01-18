@@ -119,17 +119,15 @@ else {
 
                 <tbody>
                 <tr>
-                    <th><?php echo count($ipList) ?></th>
-                    <th><?php echo count($macList) ?></th>
-                    <th><?php echo  $nbrtrame ?></th>
+                    <th><?php echo count($ipList); ?></th>
+                    <th><?php echo count($macList); ?></th>
+                    <th><?php echo $nbrtrame; ?></th>
                 </tr>
                 </tbody>
             </table>
 
             <?php
 
-
-            echo 'Communication IP à IP : ';
             echo '<div class="ip">';
             $infraction = 0;
             foreach ($ipv4 as $key => $value) {
