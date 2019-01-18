@@ -132,11 +132,11 @@ else {
 if (!empty($protocols)) {
 
     $sql = "SELECT * FROM reseau;";
-    $query = $pdo -> prepare($sql);
-    $query -> execute();
-    $SRSX = $query -> fetchALL();
+    $query = $pdo->prepare($sql);
+    $query->execute();
+    $SRSX = $query->fetchALL();
 
-    foreach ($SRSX as $cle => $value){
+    foreach ($SRSX as $cle => $value) {
         foreach ($value as $key => $valeur) {
 
             if ($key == 'id') {
@@ -152,16 +152,27 @@ if (!empty($protocols)) {
         }
     }
 
-    tab($infraction);
-
     foreach ($ipv4 as $key => $value) {
-        $temp = explode('to',$key);
-        echo $source = $temp[0];
-        br();
-        echo $dest = $temp[1];
-        br();
+        $temp = explode('to', $key);
+        $source = $temp[0];
+        $dest = $temp[1];
+
+        foreach ($SRSX as $cle => $value) {
+            foreach ($value as $clef => $values) {
+                if ($source == $infraction[$cle]['ip_low'] or $source == $infraction[$cle]['ip_low']) {
+                    $infraction[$cle]['erreur'] = $infraction[$cle]['erreur'] + $values;
+                }
+            }
+
+
+            if ($source == $temp[0] or $source == $temp[1]) {
+
+            }
+        }
     }
-    tab($ipv4);
+}
+
+tab($infraction);
 
     $total = count($protocols);
     $compteur = 0;
