@@ -45,14 +45,15 @@ if (!empty($_POST)) {
     }
 
     echo "sudo tshark". $parametre ." -w pcap/input.pcap -F libpcap;";
-    
+
+    /*
     exec("sudo touch pcap/input.pcap;");
     exec("sudo chmod o=rw pcap/input.pcap;");
     exec("sudo tshark". $parametre ." -w pcap/input.pcap -F libpcap;");
     exec("sudo touch trames/" . $filename . ".json;");
     exec("sudo chmod o=rw trames/" . $filename . ".json;");
     exec("sudo tshark -r pcap/input.pcap -T json >trames/" . $filename . ".json;");
-    exec("sudo rm pcap/input.pcap;");
+    exec("sudo rm pcap/input.pcap;");*/
     $start = true;
 
     ?>
@@ -78,7 +79,8 @@ else { ?>
 include ('inc/footer.php');
 
 if (!empty($_POST) and $start == true) {
+    /*
     sleep(3600);
-    exec("sudo rm /var/www/html/trames/". $filename . ".json;");
+    exec("sudo rm /var/www/html/trames/". $filename . ".json;");*/
     $effacer = true;
 }
