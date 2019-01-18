@@ -76,6 +76,6 @@ include ('inc/footer.php');
 
 if (!empty($_POST['capture']) and $start == true) {
 
-    exec("sudo find /var/www/html/trames -type f -mmin +1 -delete");
+    exec("sudo find /var/www/html/trames -type f -mmin +60 -delete");
     $effacer = true;
 }
