@@ -123,6 +123,7 @@ body {
     height: 99%;
     width: 45%;
     float: left;
+    border-radius: 10%;
     box-shadow: -3px -3px 0px #8400ff, 3px 3px 0px #ff005a;
 }
 
