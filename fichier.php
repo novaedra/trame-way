@@ -158,6 +158,7 @@ else {
     }
 }
 
+tab($protocols);
 if (!empty($protocols)) {
 
     $total = count($protocols);
@@ -189,8 +190,6 @@ if (!empty($protocols)) {
             }
         });
     </script>
-
     <?php
 }
-
 include ('inc/footer.php');
