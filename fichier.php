@@ -153,6 +153,14 @@ if (!empty($protocols)) {
     }
 
     tab($infraction);
+
+    foreach ($ipv4 as $key => $value) {
+        $temp = explode('to',$key);
+        echo $source = $temp[0];
+        br();
+        echo $dest = $temp[1];
+        br();
+    }
     tab($ipv4);
 
     $total = count($protocols);
