@@ -159,17 +159,17 @@ if (!empty($protocols)) {
                     $infraction[$cle][$key] = $valeur;
                 }
                 $infraction[$cle]['infraction'] = 0;
-                $mask = $value['mask'];
-                $low = $value['ip_low'];
+                echo $mask = $value['mask'];
+                echo $low = $value['ip_low'];
 
-                $oIP = new IP4Calc($low, $mask);
+                /*$oIP = new IP4Calc($low, $mask);
 
                 if ($oIP->partOf($source) == true) {
                     $infraction[$cle]['infraction'] = $infraction[$cle]['infraction']+$valeur;
                 }
                 if ($oIP->partOf($dest) == true) {
                     $infraction[$cle]['infraction'] = $infraction[$cle]['infraction']+$valeur;
-                }
+                }*/
             }
         }
     }
