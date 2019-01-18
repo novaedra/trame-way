@@ -139,6 +139,10 @@ if (!empty($protocols)) {
     $query -> execute();
     $SRSX = $query -> fetchALL();
 
+    foreach ($SRSX as $key => $value){
+        echo $key.br();
+    }
+
     tab($SRSX);
 
     $total = count($protocols);
