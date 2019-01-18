@@ -1,3 +1,0 @@
-SHA256(Debian 9.x 64-bit.ovf)= 13c9b38fda6ce93e3333ae6443eaad0b289c9e3e2b33c3f9eddb3d9cda8d557d
-SHA256(Debian_9.x_64-bit-file1.iso)= c51d84019c3637ae9d12aa6658ea8c613860c776bd84c6a71eaaf765a0dd60fe
-SHA256(Debian_9.x_64-bit-disk1.vmdk)= d660fa151a122cc2c5176a4d05130c403c91441d0a405eaae3e06cb7d4ca29cd
