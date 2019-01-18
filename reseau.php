@@ -63,6 +63,7 @@ else {
 
         $sql = "INSERT INTO reseau (nom_reseau,ip_saisie,mask,ip_low,ip_high,created_at) VALUES (:nom_reseau,:addr,:mask,:ip_low,:ip_high , NOW())";
         $query = $pdo -> prepare($sql);
+        $query -> bindValue(':nom_reseau', $nom_reseau, PDO::PARAM_STR);
         $query -> bindValue(':addr', $addr, PDO::PARAM_STR);
         $query -> bindValue(':mask', $mask, PDO::PARAM_STR);
         $query -> bindValue(':ip_low', $oIP->get(IP4Calc::MIN_HOST, IP4Calc::QUAD_DOTTED), PDO::PARAM_STR);
