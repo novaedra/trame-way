@@ -4,18 +4,17 @@ include ('inc/function.php');
 include ('inc/header.php');
 include ('inc/nav.php');
 
-if(!isset($_POST['upload'])) { ?>
+if(!isset($_POST['analyser'])) { ?>
     <div class="content">
         <div class="container-fluid">
             <form method="post" action="fichier.php" enctype="multipart/form-data">
                 <input type="file" name="json"/></br>
-                <input type="submit" name="upload" value="upload"/>
+                <input type="submit" name="analyser" value="analyser"/>
             </form>
         </div>
     </div>
     <?php
 }
-
 else {
 
     if (isset($_FILES['json'])) {
@@ -38,7 +37,8 @@ else {
 
         if (empty($errors) == false) {
             echo $errors . '<br/>';
-        } else {
+        }
+        else {
             $jsonData = file_get_contents($_FILES['json']['tmp_name']);
             $jsons = json_decode($jsonData, true); //lecture json
 
@@ -157,3 +157,40 @@ else {
         }
     }
 }
+
+if (!empty($protocols)) {
+
+    $total = count($protocols);
+    $compteur = 0;
+
+    ?>
+
+    <canvas id="doughnut-chart" width="800" height="450"></canvas>
+    <script>
+
+        new Chart(document.getElementById("doughnut-chart"), {
+            type: 'doughnut',
+            data: {
+                labels: [<?php foreach ($protocols as $key => $value) { $compteur++; ?>"<?php echo $key;?>"<?php if ($compteur != $total) { echo ','; }} ?>],
+                datasets: [
+                    {
+                        <?php $compteur = 0; ?>
+                        label: "Population (millions)",
+                        backgroundColor: [<?php foreach ($protocols as $key => $value) { $compteur++; ?>"<?php echo rand_color();?>"<?php  if ($compteur != $total) { echo ','; }} ?><?php $compteur = 0; ?>],
+                        data: [<?php foreach ($protocols as $key => $value) { $compteur++; echo "$value"; if ($compteur != $total) { echo ','; }} ?>]
+                    }
+                ]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Predicted world population (millions) in 2050'
+                }
+            }
+        });
+    </script>
+
+    <?php
+}
+
+include ('inc/footer.php');

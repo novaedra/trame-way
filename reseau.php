@@ -118,3 +118,5 @@ else {
 ?>
 <input type="submit" name="supprimer" value="Supprimer"></input>
 </form>
+
+<?php include ('inc/footer.php');
