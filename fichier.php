@@ -172,7 +172,7 @@ if (!empty($protocols)) {
         }
     }
 
-    tab($infraction);
+    //tab($infraction); va falloir qu'on reprenne la valeur nom_reseau
     $compteur = 1;
 
     foreach ($infraction as $key){
