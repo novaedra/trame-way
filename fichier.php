@@ -163,11 +163,11 @@ if (!empty($protocols)) {
                 $low = $key['ip_low'];
 
                 $oIP = new IP4Calc($low, $mask);
-                if ($oIP->partOf($source) == true or $oIP->partOf($dest) == true) {
+                tab($oIP);
+                /*if ($oIP->partOf($source) == true or $oIP->partOf($dest) == true) {
 
-                    echo 'ui';
                     $infraction[$cle]['infraction'] = $infraction[$cle]['infraction']+$valeur;
-                }
+                }*/
             }
         }
     }
