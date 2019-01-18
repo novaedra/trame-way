@@ -2,17 +2,7 @@
 if(!defined('IP4CALC_CLASS')) {
     define('IP4CALC_CLASS', true);
 
-
-    /**
-     * This class is about converting IPv4 addresses between the different format available and
-     * calculating informations out of the IPv4 and netmask provided.
-     * @package IP4Calc
-     * @author Florian MAURY <pub[DASH]ip4calc[AT]x[DASH]cli[DOT]com>
-     * @version 1.1, 08/18/09
-     * @history 08/18/09 Integrating the constants in the class, adding checks for the get function
-     */
-    class IP4Calc {
-        // Definition of constants to abstract the usage from the internal namespace
+        class IP4Calc {
         const IP='IP';
         const NETMASK='Netmask';
         const NETWORK='Network';
@@ -28,20 +18,8 @@ if(!defined('IP4CALC_CLASS')) {
         const HEX='Hex';
         const QUAD_DOTTED='Quad';
         const DECIMAL='Dec';
-
-        /**
-         * Contains data provided, calculated and cached about the IP address used in this instance
-         * @access private
-         * @var Array
-         */
         private $aAddresses;
 
-        /**
-         * @access public
-         * @param string $sIP IP address in binary, hexadecimal or dotted quad format
-         * @param mixed $mNetmask The netmask of the IP address in binary, hexadecimal, dotted quad or decimal (e.g. 24 for xxx.xxx.xxx.xxx/24)
-         * @throws Exception If the IP address or the netmask are not provided in a valid format
-         */
         public function __construct($sIP, $mNetmask) {
             $this->aAddresses = array();
             $this->aAddresses[self::IP] = array();
@@ -369,7 +347,7 @@ if(!defined('IP4CALC_CLASS')) {
             // Detecting binary format for ip
             elseif(preg_match('/^[0-1]{32}$/', $sIP) > 0) {
                 $sFormat = self::BIN;
-                $iIP = self::convertBinToInt32($sIp);
+                $iIP = self::convertBinToInt32($sIP);
             }
             // IP is not provided in a valid format
             else{
