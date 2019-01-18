@@ -50,6 +50,7 @@ else {
             $ipAndMac = array();
             $protocols = array();
             $infraction = array();
+            $tempo = array();
 
             foreach ($jsons as $json) { //lecture trame par trame
 
@@ -152,9 +153,21 @@ if (!empty($protocols)) {
         }
     }
 
-    foreach ($ipv4 as $key => $valeur) {
+    foreach ($ipv4 as $clef => $valeurs) {
+        $tempo = explode(' to ',$clef);
+        $source = $tempo[0];
+        $dest = $tempo[1];
 
+        foreach ($SRSX as $cle => $value){
+            foreach ($value as $key => $valeur) {
+
+                if ($source == $infraction[$cle]['ip_low'] or $source == $infraction[$cle]['ip_high'] or $dest == $infraction[$cle]['ip_low'] or $dest == $infraction[$cle]['ip_high']) {
+                    $infraction[$cle]['infraction'] = $infraction[$cle]['infraction']+$valeur;
+                }
+            }
+        }
     }
+
     tab($SRSX);
 tab($ipv4);
 
