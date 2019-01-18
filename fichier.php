@@ -157,8 +157,7 @@ if (!empty($protocols)) {
             },
             options: {
                 title: {
-                    display: true,
-                    text: 'Liste des protocols utiliser par les trames internets'
+                    display: true
                 }
             }
         });
