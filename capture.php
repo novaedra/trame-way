@@ -2,10 +2,24 @@
 include ('inc/function.php');
 include ('inc/header.php');
 include ('inc/nav.php');
+?>
 
-if (!empty($_POST)) {
+<form action="capture.php" method="POST">
+    <span>Nom du fichier :<span/><br/>
+        <input type="text" name="filename"/><span>.JSON</span><br/>
+        <span>selection format:</span>
 
-    tab($_POST);
+        <select name="format">
+            <option value="temps">Temps</option>
+            <option value="trame">Nombre de trame</option>
+        </select>
+        <input type="number" name="nombre"/>
+
+    <input type="submit" name="capture" value="Capturer réseau"/>
+    </form>
+
+<?php
+if (!empty($_POST['capture'])) {
 
     $start = false;
     $effacer = false;
@@ -44,36 +58,18 @@ if (!empty($_POST)) {
         $parametre = ' -c 10';
     }
 
-    echo "sudo tshark". $parametre ." -w pcap/input.pcap -F libpcap;";
-
-    /*
     exec("sudo touch pcap/input.pcap;");
     exec("sudo chmod o=rw pcap/input.pcap;");
     exec("sudo tshark". $parametre ." -w pcap/input.pcap -F libpcap;");
     exec("sudo touch trames/" . $filename . ".json;");
     exec("sudo chmod o=rw trames/" . $filename . ".json;");
     exec("sudo tshark -r pcap/input.pcap -T json >trames/" . $filename . ".json;");
-    exec("sudo rm pcap/input.pcap;");*/
+    exec("sudo rm pcap/input.pcap;");
     $start = true;
 
     ?>
     <br/>
     <a title="Télécharger la capture que vous venez d\'effectuer" href="trames/<?php echo $filename.'.json'; ?>" download="<?php echo $filename.'.json' ?>">Télécharger la capture</a>
-<?php }
-else { ?>
-    <form action="capture.php" method="POST">
-    <span>Nom du fichier :<span/><br/>
-        <input type="text" name="filename"/><span>.JSON</span><br/>
-        <span>selection format:</span>
-
-        <select name="format">
-            <option value="temps">Temps</option>
-            <option value="trame">Nombre de trame</option>
-        </select>
-        <input type="number" name="nombre"/>
-
-    <input type="submit" name="capture" value="Capturer réseau"/>
-    </form>
 <?php }
 
 include ('inc/footer.php');
