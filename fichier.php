@@ -134,6 +134,13 @@ else {
 
 if (!empty($protocols)) {
 
+    $sql = "SELECT * FROM reseau;";
+    $query = $pdo -> prepare($sql);
+    $query -> execute();
+    $SRSX = $query -> fetchALL();
+
+    tab($SRSX);
+
     $total = count($protocols);
     $compteur = 0;
 
