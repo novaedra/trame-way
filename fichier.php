@@ -172,6 +172,8 @@ if (!empty($protocols)) {
         }
     }
 
+    tab($infraction);
+
     foreach ($infraction as $key){
         $compteur = 0;
         foreach ($key as $cle => $value) {
