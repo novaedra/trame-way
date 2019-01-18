@@ -1,13 +1,13 @@
 * {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+    text-align: center;
 }
 
 body {
     width: 100wh;
     height: 90vh;
     font-family: 'Open Sans';
-    text-align: center;
     padding: 0;
     margin: 0;
     color:white;
