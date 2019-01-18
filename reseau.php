@@ -48,7 +48,7 @@ include('IP4Calc.php');
                 <input type="submit" name="calculer" value="calculer"/>
             </form>
 <?php
-else {
+if (!empty($_POST['calculer'])) {
 
     $addr = trim(strip_tags($_POST['adresse']));
     $mask = trim(strip_tags($_POST['masque']));
