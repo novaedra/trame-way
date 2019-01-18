@@ -131,6 +131,11 @@ body {
     box
 }
 
+img {
+    min-width: 100px;
+    width:100%
+}
+
 .fichier a img {
     height: 75%;
     width: auto;
