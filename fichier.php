@@ -151,7 +151,7 @@ if (!empty($protocols)) {
             $infraction[$cle]['erreur'] = 0;
         }
     }
-
+/*
     foreach ($ipv4 as $key => $value) {
         $temp = explode('to', $key);
         $source = $temp[0];
@@ -167,7 +167,7 @@ if (!empty($protocols)) {
                 }
             }
         }
-    }
+    }*/
 }
 
 tab($infraction);
