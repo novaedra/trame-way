@@ -162,9 +162,12 @@ if (!empty($protocols)) {
                 $mask = $key['mask'];
                 $low = $key['ip_low'];
 
+                $oIP = new IP4Calc($low, $mask);
 
-                if ( true ) {
-
+                if ($oIP->partOf($source) == true) {
+                    $infraction[$cle]['infraction'] = $infraction[$cle]['infraction']+$valeur;
+                }
+                if ($oIP->partOf($dest) == true) {
                     $infraction[$cle]['infraction'] = $infraction[$cle]['infraction']+$valeur;
                 }
             }
