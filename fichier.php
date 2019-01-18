@@ -175,8 +175,13 @@ if (!empty($protocols)) {
     tab($infraction);
 
     foreach ($infraction as $key){
+        $compteur = 0;
         foreach ($key as $cle => $value) {
-            echo '<p class="important">'.$cle. ' : ' . $value . ' connexions interdites' . '</p>'.'<br/>';
+            if ($compteur == 0){
+                $nom = $cle;
+            }
+            echo '<p class="important">'.$nom. ' : ' . $value . ' connexions interdites' . '</p>'.'<br/>';
+            $compteur++;
         }
     }
 
