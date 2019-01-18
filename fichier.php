@@ -4,7 +4,7 @@ include ('inc/function.php');
 include ('inc/header.php');
 include ('inc/nav.php');
 
-include ('inc/IP4Calc.php');
+include ('IP4Calc.php');
 
 if(!isset($_POST['analyser'])) { ?>
     <div class="content">
@@ -163,15 +163,13 @@ if (!empty($protocols)) {
                 $low = $value['ip_low'];
 
                 $oIP = new IP4Calc($low, $mask);
-                tab($oIP);
-                /*
 
                 if ($oIP->partOf($source) == true) {
                     $infraction[$cle]['infraction'] = $infraction[$cle]['infraction']+$valeur;
                 }
                 if ($oIP->partOf($dest) == true) {
                     $infraction[$cle]['infraction'] = $infraction[$cle]['infraction']+$valeur;
-                }*/
+                }
             }
         }
     }
