@@ -2,11 +2,19 @@
 include ('inc/pdo.php');
 include ('inc/function.php');
 include ('inc/header.php');
-include ('inc/nav.php');
 
 define('NL', "\n");
 include('IP4Calc.php');
 ?>
+    <nav class="header">
+        <a href="index.php" class="logo"><img src="inc/img/shinkansen.svg"></a>
+        <div class="header-right">
+            <a href="index.php">Accueil</a>
+            <a href="fichier.php">Analyse</a>
+            <a href="capture.php">Capture</a>
+            <a class="active" href="reseau.php">Sous-réseau</a>
+        </div>
+    </nav>
             <form method="post" action="reseau.php">
 
                 <label for="adresse">Saisir le nom du réseau:</label><br/>
@@ -102,7 +110,7 @@ if (!empty($_POST['supprimer'])) {
     $return = $query -> fetchALL();
 
     foreach ($return as $var) { ?>
-        <input type="checkbox" name="<?php echo $var['id']; ?>" value="supprime moi vite stp"><?php echo $var['nom_reseau']; ?></input><br/>
+        <input type="checkbox" name="<?php echo $var['id']; ?>"><?php echo $var['nom_reseau']; ?></input><br/>
     <?php }
 }
 else {
@@ -113,7 +121,7 @@ else {
     $return = $query -> fetchALL();
 
     foreach ($return as $var) { ?>
-        <input type="checkbox" name="<?php echo $var['id']; ?>" value="supprime moi vite stp"><?php echo $var['nom_reseau']; ?></input><br/>
+        <input type="checkbox" name="<?php echo $var['id']; ?>"><?php echo $var['nom_reseau']; ?></input><br/>
     <?php }
 }
 ?>
