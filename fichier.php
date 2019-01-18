@@ -139,13 +139,13 @@ if (!empty($protocols)) {
     $query->execute();
     $SRSX = $query->fetchALL();
 
-    /*
+
     foreach ($ipv4 as $clef => $valeurs) {
         $tempo = explode(' to ', $clef);
         $source = $tempo[0];
         $dest = $tempo[1];
 
-        foreach ($SRSX as $cle => $value) {
+        /*foreach ($SRSX as $cle => $value) {
             foreach ($value as $key => $valeur) {
 
                 if ($key == 'id') {
