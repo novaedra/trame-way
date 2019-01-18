@@ -304,7 +304,7 @@ if(!defined('IP4CALC_CLASS')) {
          * @param string $sIP The IP address to test
          * @return boolean True if the IP address provided is in the subnet, otherwise false
          */
-        public function partOf($sIP) {
+        public function partOf($sIP){
             list($sFormat, $iIP) = $this->convertIPToInt32($sIP);
             return ($this->get(self::MIN_HOST, self::INT32) <= $iIP && $this->get(self::MAX_HOST, self::INT32) >= $iIP);
         }
