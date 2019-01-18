@@ -3,7 +3,9 @@ include ('inc/function.php');
 include ('inc/header.php');
 include ('inc/nav.php');
 
-if (!empty($_POST['capture'])) {
+if (!empty($_POST)) {
+
+    tab($_POST);
 
     $start = false;
     $effacer = false;
