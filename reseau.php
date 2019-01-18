@@ -7,7 +7,7 @@ define('NL', "\n");
 include('IP4Calc.php');
 ?>
     <nav class="header">
-        <a href="index.php" class="logo"><img src="inc/img/shinkansen.svg"></a>
+        <a href="index.php" class="logo"><img class="logo" src="inc/img/shinkansen.svg"></a>
         <div class="header-right">
             <a href="index.php">Accueil</a>
             <a href="fichier.php">Analyse</a>
