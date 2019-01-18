@@ -109,7 +109,7 @@ body {
     }
 }
 
-.container {
+.contenant {
     margin: 10% auto;
     max-width: 80%;
     max-height: 50%;
@@ -117,7 +117,7 @@ body {
     height: 100%;
 }
 
-.container a {
+.contenant a {
     text-decoration: none;
     color:black;
 }
@@ -194,6 +194,9 @@ input {
 input[type=submit] {
     margin-top: 10px;
     width:15%;
+}
+
+input[type=checkbox] {
 }
 
 input[type=file] {
