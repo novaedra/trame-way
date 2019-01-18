@@ -172,6 +172,10 @@ body {
     text-transform: uppercase;
 }
 
+.important{
+    color:red;
+}
+
 form {
     background-color: black;
     padding:30px;
