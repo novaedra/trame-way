@@ -160,7 +160,7 @@ if (!empty($protocols)) {
                 }
                 $infraction[$cle]['erreur'] = 0;
 
-                $addrsource = new IP4Calc($key['ip_low'], $value['mask']);
+                $addrsource = new IP4Calc($key['ip_low'], $key['mask']);
                 if ($of->partOf($source) == true or $of->partOf($dest) == true) {
 
                     echo 'oui';
