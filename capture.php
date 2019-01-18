@@ -1,8 +1,16 @@
 <?php
 include ('inc/function.php');
 include ('inc/header.php');
-include ('inc/nav.php');
 ?>
+    <nav class="header">
+        <a href="index.php" class="logo"><img src="inc/img/shinkansen.svg"></a>
+        <div class="header-right">
+            <a href="index.php">Accueil</a>
+            <a href="fichier.php">Analyse</a>
+            <a class="active" href="capture.php">Capture</a>
+            <a href="reseau.php">Sous-réseau</a>
+        </div>
+    </nav>
 
 <form action="capture.php" method="POST">
     <span>Nom du fichier :<span/><br/>

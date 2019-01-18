@@ -2,7 +2,19 @@
 include ('inc/pdo.php');
 include ('inc/function.php');
 include ('inc/header.php');
-include ('inc/nav.php');
+define('NL', "\n");
+require ('IP4Calc.php');
+?>
+    <nav class="header">
+        <a href="index.php" class="logo"><img src="inc/img/shinkansen.svg"></a>
+        <div class="header-right">
+            <a href="index.php">Accueil</a>
+            <a class="active" href="fichier.php">Analyse</a>
+            <a href="capture.php">Capture</a>
+            <a href="reseau.php">Sous-réseau</a>
+        </div>
+    </nav>
+<?php
 
 if(!isset($_POST['analyser'])) { ?>
     <div class="content">
@@ -50,6 +62,9 @@ else {
             $ipAndMac = array();
             $protocols = array();
             $infraction = array();
+            $tempo = array();
+            $dest = 0;
+            $source = 0;
 
             foreach ($jsons as $json) { //lecture trame par trame
 
@@ -132,36 +147,30 @@ else {
 if (!empty($protocols)) {
 
     $sql = "SELECT * FROM reseau;";
-    $query = $pdo -> prepare($sql);
-    $query -> execute();
-    $SRSX = $query -> fetchALL();
-
-    foreach ($SRSX as $cle => $value){
-        foreach ($value as $key => $valeur) {
-
-            if ($key == 'id') {
-                $infraction[$cle][$key] = $valeur;
-            }
-            if ($key == 'ip_low') {
-                $infraction[$cle][$key] = $valeur;
-            }
-            if ($key == 'ip_high') {
-                $infraction[$cle][$key] = $valeur;
-            }
-            $infraction['erreur'] = 0;
-        }
-    }
-
-    tab($infraction);
+    $query = $pdo->prepare($sql);
+    $query->execute();
+    $SRSX = $query->fetchALL();
 
     foreach ($ipv4 as $key => $value) {
-        $temp = explode('to',$key);
-        echo $source = $temp[0];
-        br();
-        echo $dest = $temp[1];
-        br();
+        $tempo = array();
+        $tempo = explode(' to ', $key);
+
+        foreach ($SRSX as $cle => $value) {
+            foreach ($value as $key => $valeur) {
+                $mask = $value['mask'];
+                $low = $value['ip_low'];
+                $oIP = new IP4Calc($low, $mask);
+
+                $temp = true;
+                foreach ($tempo as $to) {
+
+                    if ($oIP->partOf($to) == false) {
+                        $infraction[$value['id']]['infraction']++;
+                    }
+                }
+            }
+        }
     }
-    tab($ipv4);
 
     $total = count($protocols);
     $compteur = 0;

@@ -2,11 +2,19 @@
 include ('inc/pdo.php');
 include ('inc/function.php');
 include ('inc/header.php');
-include ('inc/nav.php');
 
 define('NL', "\n");
 include('IP4Calc.php');
 ?>
+    <nav class="header">
+        <a href="index.php" class="logo"><img src="inc/img/shinkansen.svg"></a>
+        <div class="header-right">
+            <a href="index.php">Accueil</a>
+            <a href="fichier.php">Analyse</a>
+            <a href="capture.php">Capture</a>
+            <a class="active" href="reseau.php">Sous-réseau</a>
+        </div>
+    </nav>
             <form method="post" action="reseau.php">
 
                 <label for="adresse">Saisir le nom du réseau:</label><br/>
@@ -61,13 +69,14 @@ if (!empty($_POST['calculer'])) {
 
 
 
-        $sql = "INSERT INTO reseau (nom_reseau,ip_saisie,mask,ip_low,ip_high,created_at) VALUES (:nom_reseau,:addr,:mask,:ip_low,:ip_high , NOW())";
+        $sql = "INSERT INTO reseau (nom_reseau,ip_saisie,mask,ip_low,ip_high,adrsrx,created_at) VALUES (:nom_reseau,:addr,:mask,:ip_low,:ip_high,:adrrsx , NOW())";
         $query = $pdo -> prepare($sql);
         $query -> bindValue(':nom_reseau', $nom_reseau, PDO::PARAM_STR);
         $query -> bindValue(':addr', $addr, PDO::PARAM_STR);
         $query -> bindValue(':mask', $mask, PDO::PARAM_STR);
         $query -> bindValue(':ip_low', $oIP->get(IP4Calc::MIN_HOST, IP4Calc::QUAD_DOTTED), PDO::PARAM_STR);
         $query -> bindValue(':ip_high', $oIP->get(IP4Calc::MAX_HOST, IP4Calc::QUAD_DOTTED), PDO::PARAM_STR);
+        $query -> bindValue(':adrrsx', $oIP->get(IP4Calc::NETWORK, IP4Calc::QUAD_DOTTED), PDO::PARAM_STR);
 
         $query -> execute();
     }
@@ -101,7 +110,7 @@ if (!empty($_POST['supprimer'])) {
     $return = $query -> fetchALL();
 
     foreach ($return as $var) { ?>
-        <input type="checkbox" name="<?php echo $var['id']; ?>" value="supprime moi vite stp"><?php echo $var['nom_reseau']; ?></input><br/>
+        <input type="checkbox" name="<?php echo $var['id']; ?>"><?php echo $var['nom_reseau']; ?></input><br/>
     <?php }
 }
 else {
@@ -112,7 +121,7 @@ else {
     $return = $query -> fetchALL();
 
     foreach ($return as $var) { ?>
-        <input type="checkbox" name="<?php echo $var['id']; ?>" value="supprime moi vite stp"><?php echo $var['nom_reseau']; ?></input><br/>
+        <input type="checkbox" name="<?php echo $var['id']; ?>"><?php echo $var['nom_reseau']; ?></input><br/>
     <?php }
 }
 ?>
