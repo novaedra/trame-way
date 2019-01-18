@@ -170,6 +170,7 @@ if (!empty($protocols)) {
 
     tab($SRSX);
 tab($ipv4);
+    tab($infraction);
 
 
     $total = count($protocols);
