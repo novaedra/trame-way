@@ -49,6 +49,7 @@ else {
             $macList = array();
             $ipAndMac = array();
             $protocols = array();
+            $infraction = array();
 
             foreach ($jsons as $json) { //lecture trame par trame
 
@@ -139,14 +140,22 @@ if (!empty($protocols)) {
     $query -> execute();
     $SRSX = $query -> fetchALL();
 
-    foreach ($SRSX as $key => $value){
-        foreach ($value as $key => $value) {
-            echo 'key = : '.$key.br();
-            echo 'value = : '.$value.br();
+    foreach ($SRSX as $cle => $value){
+        foreach ($value as $key => $valeur) {
+
+            if ($key == 'id') {
+                $infraction[$key] = $valeur;
+            }
+            if ($key == 'ip_low') {
+                $infraction[$key] = $valeur;
+            }
+            if ($key == 'ip_high') {
+                $infraction[$key] = $valeur;
+            }
         }
     }
 
-    tab($SRSX);
+    tab($infraction);
 
     $total = count($protocols);
     $compteur = 0;
