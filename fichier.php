@@ -125,10 +125,6 @@ else {
             </table>
 
             <?php
-
-            $pcalc = pourcentage($infraction,$nbrtrame);
-            echo 'Taux d\'erreur : '.$pcalc;
-
         }
     }
 }
