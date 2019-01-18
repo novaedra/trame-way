@@ -148,6 +148,7 @@ if (!empty($protocols)) {
             if ($key == 'ip_high') {
                 $infraction[$key] = $valeur;
             }
+            $infraction['erreur'] = 0;
         }
     }
 
