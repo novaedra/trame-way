@@ -174,7 +174,7 @@ if (!empty($protocols)) {
 
     foreach ($infraction as $key){
         foreach ($key as $cle => $value) {
-            echo '<p class="important">'.$cle . ' : ' . $value . ' connexions interdites' . '<br/>'.'</p>';
+            echo '<p class="important">'.$cle . ' : ' . $value . ' connexions interdites' . '</p>'.'<br/>';
         }
     }
 
