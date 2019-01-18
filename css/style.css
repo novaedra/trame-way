@@ -183,6 +183,7 @@ form {
     width:280px;
     width:50%;
     box-shadow: -3px -3px 0px #8400ff, 3px 3px 0px #ff005a;
+    border-radius: 10px;
 }
 
 input, textarea, select, option {
