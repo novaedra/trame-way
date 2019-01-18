@@ -139,6 +139,7 @@ if (!empty($protocols)) {
     $query->execute();
     $SRSX = $query->fetchALL();
 
+    /*
     foreach ($ipv4 as $clef => $valeurs) {
         $tempo = explode(' to ', $clef);
         $source = $tempo[0];
@@ -158,21 +159,20 @@ if (!empty($protocols)) {
                 }
                 $infraction[$cle]['erreur'] = 0;
 
-                /*$addrsource = new IP4Calc($key['ip_low'], $infraction[$cle]['mask']);
+                $addrsource = new IP4Calc($key['ip_low'], $infraction[$cle]['mask']);
                 if ($of->partOf($source) == true or $of->partOf($dest) == true) {
 
                     echo 'oui';
                     $infraction[$cle]['infraction'] = $infraction[$cle]['infraction'] + $valeur;
-                }*/
+                }
             }
         }
     }
-}
+}*/
 
-    tab($SRSX);
+tab($SRSX);
 tab($ipv4);
-    tab($infraction);
-
+tab($infraction);
 
     $total = count($protocols);
     $compteur = 0;
