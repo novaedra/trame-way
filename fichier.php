@@ -153,6 +153,7 @@ if (!empty($protocols)) {
     }
 
     tab($infraction);
+    tab($ipv4);
 
     $total = count($protocols);
     $compteur = 0;
