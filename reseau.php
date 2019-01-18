@@ -110,7 +110,10 @@ if (!empty($_POST['supprimer'])) {
     $return = $query -> fetchALL();
 
     foreach ($return as $var) { ?>
-        <input type="checkbox" name="<?php echo $var['id']; ?>"><?php echo $var['nom_reseau']; ?></input><br/>
+        <label class="container">Four
+            <input type="checkbox" name="<?php echo $var['id']; ?>"><?php echo $var['nom_reseau']; ?></input>
+            <span class="checkmark"></span>
+        </label>
     <?php }
 }
 else {
@@ -121,7 +124,10 @@ else {
     $return = $query -> fetchALL();
 
     foreach ($return as $var) { ?>
-        <input type="checkbox" name="<?php echo $var['id']; ?>"><?php echo $var['nom_reseau']; ?></input><br/>
+        <label class="container">Four
+            <input type="checkbox" name="<?php echo $var['id']; ?>"><?php echo $var['nom_reseau']; ?></input>
+            <span class="checkmark"></span>
+        </label>
     <?php }
 }
 ?>
