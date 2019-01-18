@@ -172,13 +172,13 @@ if (!empty($protocols)) {
         }
     }
 
-    //tab($infraction); va falloir qu'on reprenne la valeur nom_reseau
+    //tab($infraction) va falloir qu'on reprenne la valeur nom_reseau
     $compteur = 1;
 
     foreach ($infraction as $key){
         foreach ($key as $cle => $value) {
             ?>
-            <p class="important">sous-réseau n°<?php echo $compteur; ?> : <?php echo $value ?> connexions interdites</p><br/>;
+            <p class="important">sous-réseau n°<?php echo $compteur; ?> : <?php echo $value ?> connexions interdites</p><br/>
             <?php
         }
         $compteur++;
