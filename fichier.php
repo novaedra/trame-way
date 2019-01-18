@@ -147,7 +147,7 @@ if (!empty($protocols)) {
         $source = $tempo[0];
         $dest = $tempo[1];
 
-        /*foreach ($SRSX as $cle => $value) {
+        foreach ($SRSX as $cle => $value) {
             foreach ($value as $key => $valeur) {
 
                 if ($key == 'id') {
@@ -161,15 +161,15 @@ if (!empty($protocols)) {
                 }
                 $infraction[$cle]['erreur'] = 0;
 
-                $addrsource = new IP4Calc($key['ip_low'], $infraction[$cle]['mask']);
+                /*$addrsource = new IP4Calc($key['ip_low'], $infraction[$cle]['mask']);
                 if ($of->partOf($source) == true or $of->partOf($dest) == true) {
 
                     echo 'oui';
                     $infraction[$cle]['infraction'] = $infraction[$cle]['infraction'] + $valeur;
                 }
-            }
+            }*/
         }
-    }*/
+    }
 }
 
 tab($SRSX);
