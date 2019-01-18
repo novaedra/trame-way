@@ -148,10 +148,15 @@ if (!empty($protocols)) {
             if ($key == 'ip_high') {
                 $infraction[$cle][$key] = $valeur;
             }
-            $infraction['erreur'] = 0;
+            $infraction[$cle]['erreur'] = 0;
         }
+    }
+
+    foreach ($ipv4 as $key => $valeur) {
 
     }
+    tab($SRSX);
+tab($ipv4);
 
 
     $total = count($protocols);
