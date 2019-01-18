@@ -165,11 +165,15 @@ if (!empty($protocols)) {
                 foreach ($tempo as $to) {
 
                     if ($oIP->partOf($to) == false) {
-                        $infraction[$value['id']]['infraction']++;
+                        $infraction[$value['nom_reseau']]['infraction']++;
                     }
                 }
             }
         }
+    }
+
+    foreach ($infraction as $key => $value){
+        echo $key.' : '.$value.' connexions interdites'.'<br/>';
     }
 
     $total = count($protocols);
@@ -188,7 +192,7 @@ if (!empty($protocols)) {
                     {
                         <?php $compteur = 0; ?>
                         backgroundColor: [<?php foreach ($protocols as $key => $value) { $compteur++; ?>"<?php echo rand_color();?>"<?php  if ($compteur != $total) { echo ','; }} ?><?php $compteur = 0; ?>],
-                        data: [<?php foreach ($protocols as $key => $value) { $compteur++; echo "$value"; if ($compteur != $total) { echo ','; }} ?>]
+                        data: [<?php foreach ($protocols as $key => $value) { $compteur++; echo "$value"; if ($compteur != $total) { echo ','; }} $compteur = 0;?>]
                     }
                 ]
             },
@@ -200,5 +204,6 @@ if (!empty($protocols)) {
         });
     </script>
     <?php
+
 }
 include ('inc/footer.php');
