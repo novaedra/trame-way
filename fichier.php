@@ -178,7 +178,7 @@ if (!empty($protocols)) {
     foreach ($infraction as $key){
         foreach ($key as $cle => $value) {
             ?>
-            <p class="important">SOUS réseau n°<?php echo $compteur; ?> : <?php echo $value ?> connexions interdites</p><br/>;
+            <p class="important">sous-réseau n°<?php echo $compteur; ?> : <?php echo $value ?> connexions interdites</p><br/>;
             <?php
         }
         $compteur++;
