@@ -158,7 +158,7 @@ if (!empty($protocols)) {
                 if ($key == 'ip_high') {
                     $infraction[$cle][$key] = $valeur;
                 }
-                $infraction[$cle]['infraction'] = 0;
+                $infraction[$value['id']]['infraction'] = 0;
                 $mask = $value['mask'];
                 $low = $value['ip_low'];
 
