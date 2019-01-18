@@ -129,7 +129,7 @@ else {
     }
 }
 
-if (!empty($protocols)) {
+/*if (!empty($protocols)) {
 
     $sql = "SELECT * FROM reseau;";
     $query = $pdo->prepare($sql);
@@ -151,7 +151,7 @@ if (!empty($protocols)) {
             $infraction[$cle]['erreur'] = 0;
         }
     }
-/*
+
     foreach ($ipv4 as $key => $value) {
         $temp = explode('to', $key);
         $source = $temp[0];
@@ -167,8 +167,8 @@ if (!empty($protocols)) {
                 }
             }
         }
-    }*/
-}
+    }
+}*/
 
 tab($infraction);
 
