@@ -198,6 +198,7 @@ input[type=submit] {
 input[type=file] {
     color: black;
     width:25%;
+    width:50%;
 }
 
 input, textarea, select {
