@@ -5,6 +5,8 @@
 }
 
 body {
+    width: 100wh;
+    height: 90vh;
     font-family: 'Open Sans';
     padding: 0;
     margin: 0;
