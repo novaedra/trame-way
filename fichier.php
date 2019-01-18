@@ -140,13 +140,13 @@ if (!empty($protocols)) {
         foreach ($value as $key => $valeur) {
 
             if ($key == 'id') {
-                $infraction[$key] = $valeur;
+                $infraction[$cle][$key] = $valeur;
             }
             if ($key == 'ip_low') {
-                $infraction[$key] = $valeur;
+                $infraction[$cle][$key] = $valeur;
             }
             if ($key == 'ip_high') {
-                $infraction[$key] = $valeur;
+                $infraction[$cle][$key] = $valeur;
             }
             $infraction['erreur'] = 0;
         }
