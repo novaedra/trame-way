@@ -180,7 +180,9 @@ if (!empty($protocols)) {
             if ($compteur == 0){
                 $nom = $cle;
             }
-            echo '<p class="important">'.$nom. ' : ' . $value . ' connexions interdites' . '</p>'.'<br/>';
+            if (isset($nom)) {
+                echo '<p class="important">'.$nom. ' : ' . $value . ' connexions interdites' . '</p>'.'<br/>';
+            }
             $compteur++;
         }
     }
