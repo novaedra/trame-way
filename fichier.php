@@ -172,8 +172,10 @@ if (!empty($protocols)) {
         }
     }
 
-    foreach ($infraction as $key => $value){
-        echo $key.' : '.$value.' connexions interdites'.'<br/>';
+    foreach ($infraction as $key){
+        foreach ($key as $cle) {
+            echo $cle . ' : ' . $value . ' connexions interdites' . '<br/>';
+        }
     }
 
     $total = count($protocols);
