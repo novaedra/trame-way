@@ -159,14 +159,12 @@ if (!empty($protocols)) {
 
         foreach ($SRSX as $cle => $value) {
             foreach ($value as $clef => $values) {
-                if ($source == $infraction[$cle]['ip_low'] or $source == $infraction[$cle]['ip_low']) {
+                if ($source == $infraction[$cle]['ip_low'] or $source == $infraction[$cle]['ip_high']) {
                     $infraction[$cle]['erreur'] = $infraction[$cle]['erreur'] + $values;
                 }
-            }
-
-
-            if ($source == $temp[0] or $source == $temp[1]) {
-
+                if ($dest == $infraction[$cle]['ip_low'] or $dest == $infraction[$cle]['ip_high']) {
+                    $infraction[$cle]['erreur'] = $infraction[$cle]['erreur'] + $values;
+                }
             }
         }
     }
