@@ -4,6 +4,6 @@
         <a class="active" href="index.php">Accueil</a>
         <a href="fichier.php">Analyse</a>
         <a href="capture.php">Capture</a>
-        <a href="reseau.php">Sous-réseau</a>
+        <a href="reseau.php">Réseau</a>
     </div>
 </nav>
