@@ -11,7 +11,7 @@ require ('IP4Calc.php');
             <a href="index.php">Accueil</a>
             <a class="active" href="fichier.php">Analyse</a>
             <a href="capture.php">Capture</a>
-            <a href="reseau.php">Sous-réseau</a>
+            <a href="reseau.php">Réseau</a>
         </div>
     </nav>
 <?php

@@ -5,8 +5,8 @@ if (!isset($_POST['valider'])) {
     ?>
     <form action="" method="POST" enctype="multipart/form-data">
         <label for="file">Selectioné un fichier</label>
-        <input type="file" name="file"/></br>
-        <label for="mot">Mot recherché :</label><br/>
+        <input type="file" name="file"/><br/>
+        <label for="mot">Mot recherché :</label>
         <input type="text" name="mot" /><br/>
         <input type="submit" value="valider" name="valider"/>
     </form>

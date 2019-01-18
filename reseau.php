@@ -12,7 +12,7 @@ include('IP4Calc.php');
             <a href="index.php">Accueil</a>
             <a href="fichier.php">Analyse</a>
             <a href="capture.php">Capture</a>
-            <a class="active" href="reseau.php">Sous-réseau</a>
+            <a class="active" href="reseau.php">Réseau</a>
         </div>
     </nav>
             <form method="post" action="reseau.php">

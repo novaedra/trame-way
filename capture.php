@@ -8,7 +8,7 @@ include ('inc/header.php');
             <a href="index.php">Accueil</a>
             <a href="fichier.php">Analyse</a>
             <a class="active" href="capture.php">Capture</a>
-            <a href="reseau.php">Sous-réseau</a>
+            <a href="reseau.php">Réseau</a>
         </div>
     </nav>
 
