@@ -149,7 +149,6 @@ if (!empty($protocols)) {
                 datasets: [
                     {
                         <?php $compteur = 0; ?>
-                        label: "Population (millions)",
                         backgroundColor: [<?php foreach ($protocols as $key => $value) { $compteur++; ?>"<?php echo rand_color();?>"<?php  if ($compteur != $total) { echo ','; }} ?><?php $compteur = 0; ?>],
                         data: [<?php foreach ($protocols as $key => $value) { $compteur++; echo "$value"; if ($compteur != $total) { echo ','; }} ?>]
                     }
