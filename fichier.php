@@ -163,12 +163,11 @@ if (!empty($protocols)) {
                 $addrsource = new IP4Calc($key['ip_low'], $key['mask']);
                 if ($addrsource->partOf($source) == true or $addrsource->partOf($dest) == true) {
 
-                    echo 'oui';
-                    $infraction[$cle]['infraction'] = 1;
+                    $infraction[$cle]['infraction'] = $infraction[$cle]['infraction']+$valeur;
                 }
             }
         }
-}
+    }
 
 tab($SRSX);
 tab($ipv4);
