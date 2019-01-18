@@ -140,7 +140,7 @@ if (!empty($protocols)) {
     $SRSX = $query -> fetchALL();
 
     foreach ($SRSX as $key => $value){
-        echo $key.br();
+        echo 'key = : '.$key.br();
     }
 
     tab($SRSX);
