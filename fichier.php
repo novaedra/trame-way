@@ -4,6 +4,8 @@ include ('inc/function.php');
 include ('inc/header.php');
 include ('inc/nav.php');
 
+include ('inc/IP4Calc.php');
+
 if(!isset($_POST['analyser'])) { ?>
     <div class="content">
         <div class="container-fluid">
@@ -133,40 +135,38 @@ else {
 if (!empty($protocols)) {
 
     $sql = "SELECT * FROM reseau;";
-    $query = $pdo -> prepare($sql);
-    $query -> execute();
-    $SRSX = $query -> fetchALL();
-
-    foreach ($SRSX as $cle => $value){
-        foreach ($value as $key => $valeur) {
-
-            if ($key == 'id') {
-                $infraction[$cle][$key] = $valeur;
-            }
-            if ($key == 'ip_low') {
-                $infraction[$cle][$key] = $valeur;
-            }
-            if ($key == 'ip_high') {
-                $infraction[$cle][$key] = $valeur;
-            }
-            $infraction[$cle]['erreur'] = 0;
-        }
-    }
+    $query = $pdo->prepare($sql);
+    $query->execute();
+    $SRSX = $query->fetchALL();
 
     foreach ($ipv4 as $clef => $valeurs) {
-        $tempo = explode(' to ',$clef);
+        $tempo = explode(' to ', $clef);
         $source = $tempo[0];
         $dest = $tempo[1];
 
-        foreach ($SRSX as $cle => $value){
+        foreach ($SRSX as $cle => $value) {
             foreach ($value as $key => $valeur) {
 
-                /*if ($source == $infraction[$cle]['ip_low'] or $source == $infraction[$cle]['ip_high'] or $dest == $infraction[$cle]['ip_low'] or $dest == $infraction[$cle]['ip_high']) {
-                    $infraction[$cle]['infraction'] = $infraction[$cle]['infraction']+$valeur;
-                }*/
+                if ($key == 'id') {
+                    $infraction[$cle][$key] = $valeur;
+                }
+                if ($key == 'ip_low') {
+                    $infraction[$cle][$key] = $valeur;
+                }
+                if ($key == 'ip_high') {
+                    $infraction[$cle][$key] = $valeur;
+                }
+                $infraction[$cle]['erreur'] = 0;
+
+                $addrsource = new IP4Calc($key['ip_low'], $infraction[$cle]['mask']);
+                if ($of->partOf($source) == true or $of->partOf($dest) == true) {
+
+                    $infraction[$cle]['infraction'] = $infraction[$cle]['infraction'] + $valeur;
+                }
             }
         }
     }
+}
 
     tab($SRSX);
 tab($ipv4);
