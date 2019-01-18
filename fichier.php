@@ -43,13 +43,10 @@ else {
             $jsons = json_decode($jsonData, true); //lecture json
 
             $nbrtrame = 0;
-            $tempo = 0;
             $ipv4 = array();
             $mac = array();
             $ipList = array();
             $macList = array();
-            $tout = array();
-            $temp = array();
             $ipAndMac = array();
             $protocols = array();
 
@@ -128,37 +125,15 @@ else {
 
             <?php
 
-            echo '<div class="ip">';
-            $infraction = 0;
-            foreach ($ipv4 as $key => $value) {
-                $toto =array();
-                $toto = explode(' to ',$key);
-
-                $tempo = true;
-                foreach ($toto as $to) {
-
-                    if ($oIP->partOf($to) == false) {
-                        $tempo = false;
-                    }
-                }
-                if ($tempo == false) {
-                    $infraction += $value ;
-                }
-            }
-            echo $infraction;
-            br();
             $pcalc = pourcentage($infraction,$nbrtrame);
-            echo 'Erreur : '.$pcalc;
-
-            echo '</div>';
-            echo '<br/>';
-
+            echo 'Taux d\'erreur : '.$pcalc;
 
         }
     }
 }
 
 tab($protocols);
+
 if (!empty($protocols)) {
 
     $total = count($protocols);
