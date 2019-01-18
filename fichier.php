@@ -53,6 +53,8 @@ else {
             $protocols = array();
             $infraction = array();
             $tempo = array();
+            $dest = 0;
+            $source = 0;
 
             foreach ($jsons as $json) { //lecture trame par trame
 
