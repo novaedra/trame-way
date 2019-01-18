@@ -173,18 +173,18 @@ if (!empty($protocols)) {
     }
 
     tab($infraction);
+    $compteur = 0;
 
     foreach ($infraction as $key){
-        $compteur = 0;
         foreach ($key as $cle => $value) {
             if ($compteur == 0){
                 $nom = $cle;
             }
             if (isset($nom)) {
-                echo '<p class="important">'.$nom. ' : ' . $value . ' connexions interdites' . '</p>'.'<br/>';
+                echo "<p class="important">SOUS réseau n°.$compteur. ' : ' . $value . ' connexions interdites' . '</p>'.'<br/>'";
             }
-            $compteur++;
         }
+        $compteur++;
     }
 
     $total = count($protocols);
