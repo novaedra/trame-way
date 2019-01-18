@@ -140,7 +140,7 @@ if (!empty($protocols)) {
     $SRSX = $query->fetchALL();
 
 
-    foreach ($ipv4 as $clef => $valeurs) {
+    foreach ($ipv4 as $clef) {
         $tempo = explode(' to ', $clef);
         $source = $tempo[0];
         $dest = $tempo[1];
