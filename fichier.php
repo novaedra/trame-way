@@ -155,7 +155,7 @@ if (!empty($protocols)) {
                 foreach ($tempo as $to) {
 
                     if ($oIP->partOf($to) == false) {
-                        $infraction[$cle]['infraction']++;
+                        $infraction[$value['id']]['infraction']++;
                     }
                 }
             }
