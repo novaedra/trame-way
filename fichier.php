@@ -141,7 +141,29 @@ if (!empty($protocols)) {
     $query->execute();
     $SRSX = $query->fetchALL();
 
-    foreach ($ipv4 as $clef) {
+    foreach ($ipv4 as $key => $value) {
+        $tempo = array();
+        $tempo = explode(' to ', $key);
+
+        foreach ($SRSX as $cle => $value) {
+            foreach ($value as $key => $valeur) {
+                $mask = $value['mask'];
+                $low = $value['ip_low'];
+                $oIP = new IP4Calc($low, $mask);
+
+                $temp = true;
+                foreach ($tempo as $to) {
+
+                    if ($oIP->partOf($to) == false) {
+                        $infraction[$cle]['infraction'] += $valeur;
+                    }
+                }
+            }
+        }
+    }
+
+    /*
+     * foreach ($ipv4 as $clef) {
         $tempo = explode(' to ', $clef);
         $source = $tempo[0];
         $dest = $tempo[1];
@@ -172,7 +194,7 @@ if (!empty($protocols)) {
                 }
             }
         }
-    }
+    }*/
 
 tab($SRSX);
 tab($ipv4);
