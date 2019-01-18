@@ -74,9 +74,8 @@ if (!empty($_POST['capture'])) {
 
 include ('inc/footer.php');
 
-if (!empty($_POST) and $start == true) {
+if (!empty($_POST['capture']) and $start == true) {
 
-    sleep(3600);
-    exec("sudo rm /var/www/html/trames/". $filename . ".json;");
+    exec("sudo find /var/www/html/trames -type f -mmin +1 -delete");
     $effacer = true;
 }
