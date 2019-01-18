@@ -129,47 +129,6 @@ else {
     }
 }
 
-/*if (!empty($protocols)) {
-
-    $sql = "SELECT * FROM reseau;";
-    $query = $pdo->prepare($sql);
-    $query->execute();
-    $SRSX = $query->fetchALL();
-
-    foreach ($SRSX as $cle => $value) {
-        foreach ($value as $key => $valeur) {
-
-            if ($key == 'id') {
-                $infraction[$cle][$key] = $valeur;
-            }
-            if ($key == 'ip_low') {
-                $infraction[$cle][$key] = $valeur;
-            }
-            if ($key == 'ip_high') {
-                $infraction[$cle][$key] = $valeur;
-            }
-            $infraction[$cle]['erreur'] = 0;
-        }
-    }
-
-    foreach ($ipv4 as $key => $value) {
-        $temp = explode('to', $key);
-        $source = $temp[0];
-        $dest = $temp[1];
-
-        foreach ($SRSX as $cle => $value) {
-            foreach ($value as $clef => $values) {
-                if ($source == $infraction[$cle]['ip_low'] or $source == $infraction[$cle]['ip_high']) {
-                    $infraction[$cle]['erreur'] = $infraction[$cle]['erreur'] + $values;
-                }
-                if ($dest == $infraction[$cle]['ip_low'] or $dest == $infraction[$cle]['ip_high']) {
-                    $infraction[$cle]['erreur'] = $infraction[$cle]['erreur'] + $values;
-                }
-            }
-        }
-    }
-}*/
-
 tab($infraction);
 
     $total = count($protocols);
