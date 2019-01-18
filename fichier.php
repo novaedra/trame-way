@@ -32,7 +32,7 @@ else {
             $errors = "Extension non autorisé, veuillez séléectionner un fichier .JSON";
         }
 
-        if ($file_size > 1000000) {
+        if ($file_size > 10000000000) {
             $errors = 'Le fichier doit être au maximum de 1Go';
         }
 
