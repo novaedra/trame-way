@@ -3,7 +3,7 @@ include ('inc/function.php');
 include ('inc/header.php');
 include ('inc/nav.php');
 
-if (!empty($_POST)) {
+if (!empty($_POST['capture'])) {
 
     $start = false;
     $effacer = false;
@@ -42,6 +42,8 @@ if (!empty($_POST)) {
         $parametre = ' -c 10';
     }
 
+    echo "sudo tshark". $parametre ." -w pcap/input.pcap -F libpcap;";
+    
     exec("sudo touch pcap/input.pcap;");
     exec("sudo chmod o=rw pcap/input.pcap;");
     exec("sudo tshark". $parametre ." -w pcap/input.pcap -F libpcap;");
@@ -67,7 +69,7 @@ else { ?>
         </select>
         <input type="number" name="nombre"/>
 
-    <input type="submit" value="Capturer réseau"/>
+    <input type="submit" name="capture" value="Capturer réseau"/>
     </form>
 <?php }
 

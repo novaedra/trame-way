@@ -132,8 +132,6 @@ else {
     }
 }
 
-tab($protocols);
-
 if (!empty($protocols)) {
 
     $total = count($protocols);
@@ -160,7 +158,7 @@ if (!empty($protocols)) {
             options: {
                 title: {
                     display: true,
-                    text: 'Predicted world population (millions) in 2050'
+                    text: 'Liste des protocols utiliser par les trames internets'
                 }
             }
         });
